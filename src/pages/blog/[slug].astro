@@ -1,0 +1,224 @@
+---
+import { renderRichText } from "@storyblok/astro";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import { getBlogPosts, formatBlogDate } from "../../data/storyblok.js";
+
+// Só gera páginas para artigos publicados — um slug inexistente (ou ainda em
+// rascunho) simplesmente não tem rota estática e resulta em 404.
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, summary, cover_image: coverImage, published_at: publishedAt, tags, content, seo_title: seoTitle, seo_description: seoDescription } = post.content;
+
+const coverUrl = coverImage?.filename ? `${coverImage.filename}/m/1600x900/filters:quality(80)` : null;
+const contentHtml = content ? renderRichText(content) : "";
+---
+
+<Layout title={seoTitle || title} description={seoDescription || summary}>
+  <Header />
+  <main>
+    <article class="post">
+      <header class="post__header">
+        <div class="post__header-inner">
+          {publishedAt && <p class="post__data">{formatBlogDate(publishedAt)}</p>}
+          <h1 class="post__titulo">{title}</h1>
+          {Array.isArray(tags) && tags.length > 0 && (
+            <ul class="post__tags">
+              {tags.map((tag) => (
+                <li>{tag}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </header>
+
+      {coverUrl && (
+        <div class="post__capa">
+          <img src={coverUrl} alt={coverImage?.alt || title} width="1600" height="900" />
+        </div>
+      )}
+
+      <div class="post__corpo">
+        <div class="post__corpo-inner">
+          <div class="post__conteudo" set:html={contentHtml} />
+          <a class="post__voltar" href="/blog">← Voltar ao Blog</a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .post__header {
+    background: var(--offwhite);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .post__header-inner {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: clamp(2rem, 5vw, 3.75rem) clamp(2rem, 4vw, 2.75rem);
+  }
+
+  .post__data {
+    font-family: var(--font-sans);
+    font-size: var(--tamanho-legenda);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--texto-suporte);
+    margin-bottom: 0.875rem;
+  }
+
+  .post__titulo {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: var(--tamanho-h1);
+    line-height: 1.08;
+    color: var(--azul-profundo);
+    text-wrap: balance;
+    max-width: 44rem;
+  }
+
+  .post__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin-top: 1.25rem;
+  }
+
+  .post__tags li {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--texto-suporte);
+    border: 1px solid var(--hairline);
+    border-radius: 99px;
+    padding: 0.25rem 0.625rem;
+  }
+
+  .post__capa {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .post__capa img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 2px solid var(--hairline);
+    border-radius: 14px;
+  }
+
+  .post__corpo {
+    background: var(--branco);
+  }
+
+  .post__corpo-inner {
+    max-width: 42rem;
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: var(--secao-gap);
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .post__conteudo {
+    font-size: var(--tamanho-corpo);
+    line-height: 1.75;
+    color: var(--texto-corpo);
+  }
+
+  .post__conteudo :global(h2) {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--azul-profundo);
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .post__conteudo :global(h3) {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--azul-profundo);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post__conteudo :global(p) {
+    margin-bottom: 1.25rem;
+  }
+
+  .post__conteudo :global(a) {
+    color: var(--azul-profundo);
+    text-decoration-color: var(--magenta);
+    text-underline-offset: 3px;
+  }
+
+  .post__conteudo :global(a:hover) {
+    color: var(--magenta);
+  }
+
+  .post__conteudo :global(strong) {
+    color: var(--azul-profundo);
+  }
+
+  .post__conteudo :global(ul),
+  .post__conteudo :global(ol) {
+    margin-bottom: 1.25rem;
+    padding-left: 1.25rem;
+  }
+
+  .post__conteudo :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post__conteudo :global(blockquote) {
+    border-left: 3px solid var(--magenta);
+    padding-left: 1.25rem;
+    margin: 1.75rem 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--texto-suporte);
+  }
+
+  .post__conteudo :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-block: 1.5rem;
+  }
+
+  .post__voltar {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    color: var(--azul-profundo);
+  }
+
+  .post__voltar:hover {
+    color: var(--magenta);
+  }
+</style>

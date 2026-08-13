@@ -12,7 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.4.5"
+    "@storyblok/astro": "^10.2.3",
+    "astro": "^6.4.5",
+    "storyblok-js-client": "^7.7.1"
   },
   "allowScripts": {
     "esbuild@0.27.7": true,

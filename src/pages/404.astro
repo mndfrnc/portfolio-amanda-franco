@@ -1,0 +1,102 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+
+<Layout title="Página não encontrada — Amanda Franco" description="A página que você procura não existe ou foi movida.">
+  <Header />
+  <main>
+    <section class="nao-encontrada" aria-label="Página não encontrada">
+      <div class="nao-encontrada__inner">
+        <p class="kicker">404</p>
+        <h1 class="nao-encontrada__titulo">Essa página não existe.</h1>
+        <p class="nao-encontrada__texto">
+          O conteúdo que você procura não foi encontrado — pode ter sido movido ou ainda não foi
+          publicado.
+        </p>
+        <a class="botao botao--cheio" href="/">Voltar ao início</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .nao-encontrada {
+    background: var(--offwhite);
+    min-height: calc(100dvh - 65px);
+    display: flex;
+    align-items: center;
+  }
+
+  .nao-encontrada__inner {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: var(--secao-gap);
+  }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--tamanho-legenda);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azul-profundo);
+    margin-bottom: 1.25rem;
+  }
+
+  .kicker::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .nao-encontrada__titulo {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: var(--tamanho-h1);
+    line-height: 1.1;
+    color: var(--azul-profundo);
+    max-width: 34rem;
+    margin-bottom: 1.125rem;
+  }
+
+  .nao-encontrada__texto {
+    font-size: var(--tamanho-corpo);
+    line-height: 1.6;
+    color: var(--texto-suporte);
+    max-width: 34rem;
+    margin-bottom: 2rem;
+  }
+
+  .botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.875rem 1.875rem;
+    min-height: 48px;
+    border: 2px solid transparent;
+  }
+
+  .botao--cheio {
+    background: var(--magenta);
+    color: var(--azul-profundo);
+    border-color: var(--magenta);
+  }
+
+  .botao--cheio:hover {
+    opacity: 0.9;
+  }
+</style>
