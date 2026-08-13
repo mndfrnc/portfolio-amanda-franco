@@ -1,0 +1,207 @@
+---
+import { Image } from "astro:assets";
+import heroPhoto from "../assets/fotos/foto-hero-amanda.jpg";
+import { copy } from "../data/copy.js";
+
+// Assinatura oficial só existe em preto/branco — recolorida para magenta (aprovado na V5)
+// via currentColor, preservando integralmente os paths e proporções do SVG original.
+import assinaturaSvg from "../../public/identidade/assinatura-amanda.svg?raw";
+const assinaturaMagenta = assinaturaSvg.replace(/fill="#000000"/g, 'fill="currentColor"');
+---
+
+<section id="inicio" class="hero" aria-label="Apresentação">
+  <div class="hero__inner">
+    <div class="hero__text">
+      <p class="hero__kicker">{copy.heroKicker}</p>
+      <h1 class="hero__h1">{copy.heroH1}</h1>
+      <p class="hero__sub">{copy.heroSub}</p>
+      <div class="hero__ctas">
+        <a class="botao botao--cheio" href="#cases">{copy.heroCta1}</a>
+        <a class="botao botao--contorno" href="#contato">{copy.heroCta2}</a>
+      </div>
+    </div>
+
+    <div class="hero__photo">
+      <Image
+        src={heroPhoto}
+        alt="Retrato de Amanda Franco"
+        width={1100}
+        height={733}
+        sizes="(min-width: 860px) 700px, 100vw"
+        class="hero__photo-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <span class="hero__assinatura" role="presentation" set:html={assinaturaMagenta} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    background: var(--offwhite);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .hero__inner {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: clamp(1.5rem, 4vw, 2.5rem) var(--secao-gap);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .hero__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 44rem;
+  }
+
+  .hero__kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--tamanho-legenda);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azul-profundo);
+    margin-bottom: 1.125rem;
+  }
+
+  .hero__kicker::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .hero__h1 {
+    font-family: var(--font-serif);
+    font-weight: 900;
+    font-size: var(--tamanho-h1);
+    line-height: 1.06;
+    color: var(--azul-profundo);
+    text-wrap: balance;
+    margin-bottom: 1.375rem;
+  }
+
+  .hero__sub {
+    font-size: var(--tamanho-corpo);
+    line-height: 1.6;
+    color: var(--texto-suporte);
+    max-width: 38rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.875rem;
+  }
+
+  .hero__photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 35 / 38;
+    overflow: hidden;
+    border: 2px solid var(--hairline);
+  }
+
+  :global(.hero__photo-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero__assinatura {
+    position: absolute;
+    right: 12px;
+    top: 55%;
+    transform: translateY(-50%);
+    width: clamp(160px, 44vw, 240px);
+    height: auto;
+    color: var(--magenta);
+  }
+
+  .hero__assinatura :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (min-width: 860px) {
+    .hero__inner {
+      flex-direction: row;
+      justify-content: space-between;
+      padding-block: clamp(2rem, 5vw, 3.75rem) var(--secao-gap);
+    }
+
+    .hero__text {
+      flex: 1 1 42rem;
+      width: auto;
+      padding-top: 0.75rem;
+    }
+
+    .hero__photo {
+      flex: 0 0 clamp(340px, 39vw, 700px);
+      width: clamp(340px, 39vw, 700px);
+      aspect-ratio: 700 / 760;
+    }
+
+    .hero__assinatura {
+      right: 40px;
+      top: auto;
+      bottom: 34px;
+      transform: none;
+      width: clamp(220px, 22vw, 320px);
+    }
+  }
+
+  /* Botões — reaproveitados em Hero e Contato. */
+  :global(.botao) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.875rem 1.875rem;
+    min-height: 48px;
+    border: 2px solid transparent;
+    transition: transform 0.12s ease, background-color 0.12s ease, border-color 0.12s ease, opacity 0.12s ease;
+  }
+
+  :global(.botao--cheio) {
+    background: var(--magenta);
+    color: var(--azul-profundo);
+    border-color: var(--magenta);
+  }
+
+  :global(.botao--cheio:hover) {
+    opacity: 0.9;
+  }
+
+  :global(.botao--contorno) {
+    border-color: var(--azul-profundo);
+    color: var(--azul-profundo);
+  }
+
+  :global(.botao--contorno:hover) {
+    background: var(--azul-profundo);
+    color: var(--branco);
+  }
+</style>

@@ -1,0 +1,133 @@
+/* Reset mínimo — base responsiva e compatível, sem framework. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   Fontes — Fraunces (editorial) e Space Grotesk (funcional), fontes variáveis
+   auto-hospedadas em /fonts, formato WOFF2 (mais leve que os TTFs de origem). */
+
+@font-face {
+  font-family: "Fraunces Variable";
+  src: url("/fonts/Fraunces-Variable.woff2") format("woff2-variations"), url("/fonts/Fraunces-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces Variable";
+  src: url("/fonts/Fraunces-Italic-Variable.woff2") format("woff2-variations"), url("/fonts/Fraunces-Italic-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk Variable";
+  src: url("/fonts/SpaceGrotesk-Variable.woff2") format("woff2-variations"), url("/fonts/SpaceGrotesk-Variable.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------------------------------------------------------------------------
+   Variáveis de marca — paleta aprovada (Mini Manual da Marca) e escala fluida. */
+
+:root {
+  /* Cor */
+  --azul-profundo: #081220;
+  --preto: #111111;
+  --branco: #ffffff;
+  --offwhite: #f7f5f1;
+  --azul-acinzentado: #a9bbc4;
+  --magenta: #fd3d85;
+  --hairline: #dedad2;
+  --texto-corpo: #2c2f33;
+  --texto-suporte: #5a6066;
+
+  /* Tipografia */
+  --font-serif: "Fraunces Variable", Georgia, serif;
+  --font-sans: "Space Grotesk Variable", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --tamanho-h1: clamp(2rem, 1.35rem + 3vw, 3.5rem);
+  --tamanho-h2: clamp(1.5rem, 1.2rem + 1.3vw, 2.125rem);
+  --tamanho-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --tamanho-corpo: clamp(1rem, 0.95rem + 0.2vw, 1.1875rem);
+  --tamanho-legenda: clamp(0.75rem, 0.72rem + 0.1vw, 0.875rem);
+
+  /* Espaço */
+  --margem: clamp(1.25rem, 4vw, 7.5rem);
+  --secao-gap: clamp(3.5rem, 6vw, 6rem);
+  --largura-max: 1800px;
+}
+
+body {
+  background: var(--offwhite);
+  color: var(--preto);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Foco visível em qualquer elemento interativo, herdado por toda a página. */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--magenta);
+  outline-offset: 3px;
+}

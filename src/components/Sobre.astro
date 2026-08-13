@@ -1,0 +1,111 @@
+---
+import { Image } from "astro:assets";
+import sobrePhoto from "../assets/fotos/foto-sobre-amanda.jpg";
+import { copy } from "../data/copy.js";
+---
+
+<section id="sobre" class="sobre" aria-label="Sobre Amanda">
+  <div class="sobre__inner">
+    <div class="sobre__photo">
+      <Image
+        src={sobrePhoto}
+        alt="Amanda Franco sorrindo, retrato pessoal"
+        width={1100}
+        height={738}
+        sizes="(min-width: 860px) 620px, 100vw"
+        class="sobre__photo-img"
+      />
+    </div>
+
+    <div class="sobre__texto">
+      <h2 class="kicker">{copy.sobreKicker}</h2>
+      {copy.sobreParas.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sobre {
+    background: var(--branco);
+  }
+
+  .sobre__inner {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: var(--secao-gap);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 4vw, 3rem);
+  }
+
+  .sobre__photo {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 2px solid var(--hairline);
+  }
+
+  :global(.sobre__photo-img) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--tamanho-legenda);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azul-profundo);
+    margin-bottom: 1.25rem;
+  }
+
+  .kicker::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .sobre__texto p:not(.kicker) {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--texto-corpo);
+    margin-bottom: 1.1rem;
+  }
+
+  .sobre__texto p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 860px) {
+    .sobre__inner {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .sobre__photo {
+      flex: 0 0 clamp(320px, 34vw, 620px);
+      width: clamp(320px, 34vw, 620px);
+      aspect-ratio: 620 / 700;
+    }
+
+    .sobre__texto {
+      flex: 1 1 30rem;
+      padding-top: 0.5rem;
+    }
+  }
+</style>

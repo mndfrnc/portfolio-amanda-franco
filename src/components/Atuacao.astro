@@ -1,0 +1,117 @@
+---
+import { copy } from "../data/copy.js";
+---
+
+<section id="atuacao" class="atuacao" aria-label="Como Amanda atua">
+  <div class="atuacao__inner">
+    <h2 class="kicker">{copy.pensarKicker}</h2>
+    <div class="atuacao__paras">
+      {copy.pensarParas.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+
+    <hr class="hairline" />
+
+    <h2 class="kicker">{copy.areasKicker}</h2>
+    <ul class="atuacao__grid">
+      {copy.areas.map((area) => (
+        <li>
+          <h3>{area.titulo}</h3>
+          <p>{area.texto}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .atuacao {
+    background: var(--branco);
+  }
+
+  .atuacao__inner {
+    max-width: var(--largura-max);
+    margin-inline: auto;
+    padding-inline: var(--margem);
+    padding-block: var(--secao-gap);
+  }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--tamanho-legenda);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azul-profundo);
+    margin-bottom: 1.5rem;
+  }
+
+  .kicker::before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--magenta);
+    flex-shrink: 0;
+  }
+
+  .atuacao__paras {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 52rem;
+  }
+
+  .atuacao__paras p {
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    color: var(--texto-corpo);
+  }
+
+  .hairline {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin-block: clamp(2rem, 5vw, 3rem);
+  }
+
+  .atuacao__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem 2.5rem;
+    max-width: 72rem;
+  }
+
+  .atuacao__grid li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    padding-left: 1.125rem;
+    border-left: 2px solid var(--hairline);
+  }
+
+  .atuacao__grid h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.1875rem;
+    color: var(--azul-profundo);
+    line-height: 1.2;
+  }
+
+  .atuacao__grid p {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: var(--texto-suporte);
+  }
+
+  @media (min-width: 860px) {
+    .atuacao__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
