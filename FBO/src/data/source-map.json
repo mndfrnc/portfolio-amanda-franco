@@ -1,0 +1,14 @@
+{
+  "context":["Case/input/briefing-criadora.md"],
+  "brandPartnerships":["artifacts/inputs-for-crm-ops/icp-and-fit.md","artifacts/inputs-for-crm-ops/prospecting-list.md","artifacts/inputs-for-crm-ops/outreach-playbook.md","artifacts/inputs-for-crm-ops/outreach-simulation-log.md","artifacts/inputs-for-crm-ops/deal-summaries.md","artifacts/inputs-for-crm-ops/pipeline-weekly-report.md"],
+  "handoff":["artifacts/inputs-for-crm-ops/handoff-manifest.md"],
+  "crmArchitecture":["artifacts/crm-outputs/crm-architecture-data-dictionary.md"],
+  "lifecycle":["artifacts/crm-outputs/lifecycle-playbook.md"],
+  "workflows":["artifacts/crm-outputs/workflow-documentation.md","Case/technical-validation/2026-09-21-064413/evidence/workflow_test_results.json"],
+  "dataQuality":["artifacts/crm-outputs/data-hygiene-report.md","Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json","Case/technical-validation/2026-09-21-064413/evidence/quarantine.csv","Case/technical-validation/2026-09-21-064413/evidence/rollback_evidence.json"],
+  "analytics":["artifacts/analytics-outputs/analytics-library.md","Case/technical-validation/2026-09-21-064413/evidence/sql_query_results.json","Case/technical-validation/2026-09-21-064413/evidence/python_analysis_results.json","Case/technical-validation/2026-09-21-064413/evidence/analytics_reconciliation.json"],
+  "dashboard":["artifacts/analytics-outputs/dashboard-insights-spec.md","Case/technical-validation/2026-09-21-064413/dashboard/index.html"],
+  "qa":["artifacts/final-outputs/qa-signoff.md"],
+  "limitations":["artifacts/final-outputs/qa-signoff.md"],
+  "evidence":["artifacts/documentation-outputs/process-library.md","artifacts/final-outputs/qa-signoff.md"]
+}
