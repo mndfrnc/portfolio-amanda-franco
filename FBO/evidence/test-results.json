@@ -1,0 +1,12 @@
+{
+  "run_date": "2026-09-23",
+  "scope": "FBO local/private",
+  "content_validation": "PASS",
+  "node_tests": {"passed":7,"failed":0,"suites":["content-contract","catalog"]},
+  "browser_tests": {"passed":27,"failed":0,"suites":["interactions","case-sections","accessibility","responsive","visual-regression"]},
+  "viewports":[320,768,1024,1440],
+  "external_network_requests":0,
+  "external_actions":0,
+  "published":false,
+  "visual_evidence":["case-desktop.png","case-mobile.png","design-system.png"]
+}
