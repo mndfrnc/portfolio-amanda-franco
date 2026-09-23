@@ -1,0 +1,1891 @@
+{
+  "identity": {
+    "name": "FBO — From Brief to Ops",
+    "subtitle": "Creator Partnerships, CRM & Marketing Operations"
+  },
+  "generatedAt": "2026-09-23",
+  "runId": "2026-09-21-064413",
+  "scope": "case_synthetic",
+  "execution": "local",
+  "sections": {
+    "context": {
+      "title": "Contexto e problema",
+      "executive": "Transformar um briefing fictício e uma operação comercial fragmentada em um sistema auditável, sem representar hipóteses como resultados reais.",
+      "sourceRefs": [
+        "Case/input/briefing-criadora.md"
+      ],
+      "details": [
+        "Marina Costa é uma persona fictícia.",
+        "Metas, audiência, receita e histórico do briefing são premissas do case.",
+        "Dois squads e seis profissionais cobrem partnerships, CRM, analytics, documentação e QA."
+      ]
+    },
+    "brandPartnerships": {
+      "title": "Brand Partnerships",
+      "executive": "ICP, fit, pesquisa pública, copy e simulações estruturam a frente comercial sem contato real.",
+      "sourceRefs": [
+        "artifacts/inputs-for-crm-ops/icp-and-fit.md",
+        "artifacts/inputs-for-crm-ops/prospecting-list.md",
+        "artifacts/inputs-for-crm-ops/outreach-playbook.md",
+        "artifacts/inputs-for-crm-ops/outreach-simulation-log.md",
+        "artifacts/inputs-for-crm-ops/deal-summaries.md",
+        "artifacts/inputs-for-crm-ops/pipeline-weekly-report.md"
+      ],
+      "details": [
+        "Pesquisa pública: marcas reais, sem oportunidade comercial confirmada.",
+        "Outreach: playbook interno e simulação; zero mensagens enviadas.",
+        "Negociação e pipeline: cenários sintéticos, não resultados comerciais."
+      ]
+    },
+    "handoff": {
+      "title": "Handoff",
+      "executive": "Um manifesto versionado transfere requisitos e evidências de Brand Partnerships para CRM Operations.",
+      "sourceRefs": [
+        "artifacts/inputs-for-crm-ops/handoff-manifest.md"
+      ],
+      "details": [
+        "Origem: brand-partnerships.",
+        "Destino: crm-operations.",
+        "Artefatos permanecem rastreáveis por caminho e integridade documental."
+      ]
+    },
+    "crmArchitecture": {
+      "title": "CRM Architecture",
+      "executive": "Modelo lógico de objetos, associações, Approval Gates e Evidence, projetado sem configuração em CRM real.",
+      "sourceRefs": [
+        "artifacts/crm-outputs/crm-architecture-data-dictionary.md"
+      ],
+      "details": [
+        "102 propriedades documentadas.",
+        "Escopos case_synthetic e production_real são isolados.",
+        "Nenhuma escrita externa foi realizada."
+      ]
+    },
+    "lifecycle": {
+      "title": "Lifecycle e SLAs",
+      "executive": "Lifecycles de Company/Contact e stages de oportunidade têm critérios, owner, SLA, evidência e transições bloqueadas.",
+      "sourceRefs": [
+        "artifacts/crm-outputs/lifecycle-playbook.md"
+      ],
+      "details": [
+        "Company e Contact não são confundidos com Deal stage.",
+        "Transições exigem evidência e não promovem dados sintéticos."
+      ]
+    },
+    "workflows": {
+      "title": "Workflows",
+      "executive": "27/27 cenários passaram no simulador local determinístico.",
+      "sourceRefs": [
+        "artifacts/crm-outputs/workflow-documentation.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/workflow_test_results.json"
+      ],
+      "details": [
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-01:ALLOW_SCOPE",
+          "expected": "ALLOW_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "production_real"
+          },
+          "name": "escopo coerente",
+          "observed": "ALLOW_SCOPE",
+          "status": "PASS",
+          "test_id": "T01",
+          "workflow_id": 1
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_CROSS_SCOPE",
+          "expected": "BLOCKED_CROSS_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "case_synthetic"
+          },
+          "name": "cross-scope",
+          "observed": "BLOCKED_CROSS_SCOPE",
+          "status": "PASS",
+          "test_id": "T02",
+          "workflow_id": 1
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_SCOPE_MISSING",
+          "expected": "BLOCKED_SCOPE_MISSING",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": ""
+          },
+          "name": "escopo ausente",
+          "observed": "BLOCKED_SCOPE_MISSING",
+          "status": "PASS",
+          "test_id": "T03",
+          "workflow_id": 1
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-02:ALLOW_STAGE_TRANSITION",
+          "expected": "ALLOW_STAGE_TRANSITION",
+          "external_action": false,
+          "inputs": {
+            "evidence": true,
+            "transition": "next"
+          },
+          "name": "gate completo",
+          "observed": "ALLOW_STAGE_TRANSITION",
+          "status": "PASS",
+          "test_id": "T04",
+          "workflow_id": 2
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-02:BLOCKED_EVIDENCE",
+          "expected": "BLOCKED_EVIDENCE",
+          "external_action": false,
+          "inputs": {
+            "evidence": false,
+            "transition": "next"
+          },
+          "name": "evidência ausente",
+          "observed": "BLOCKED_EVIDENCE",
+          "status": "PASS",
+          "test_id": "T05",
+          "workflow_id": 2
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-02:BLOCKED_STAGE_JUMP",
+          "expected": "BLOCKED_STAGE_JUMP",
+          "external_action": false,
+          "inputs": {
+            "evidence": true,
+            "transition": "jump"
+          },
+          "name": "salto de stage",
+          "observed": "BLOCKED_STAGE_JUMP",
+          "status": "PASS",
+          "test_id": "T06",
+          "workflow_id": 2
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-03:SUPPRESS_ALL_CHANNELS",
+          "expected": "SUPPRESS_ALL_CHANNELS",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": true,
+            "opt_out": true
+          },
+          "name": "opt-out com evidência",
+          "observed": "SUPPRESS_ALL_CHANNELS",
+          "status": "PASS",
+          "test_id": "T07",
+          "workflow_id": 3
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-03:BLOCKED_EVENT_EVIDENCE",
+          "expected": "BLOCKED_EVENT_EVIDENCE",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": false,
+            "opt_out": true
+          },
+          "name": "opt-out sem origem",
+          "observed": "BLOCKED_EVENT_EVIDENCE",
+          "status": "PASS",
+          "test_id": "T08",
+          "workflow_id": 3
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-03:IGNORED_DUPLICATE_EVENT",
+          "expected": "IGNORED_DUPLICATE_EVENT",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": true,
+            "evidence": true,
+            "opt_out": true
+          },
+          "name": "evento repetido",
+          "observed": "IGNORED_DUPLICATE_EVENT",
+          "status": "PASS",
+          "test_id": "T09",
+          "workflow_id": 3
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-04:CREATE_INTERNAL_REMINDER",
+          "expected": "CREATE_INTERNAL_REMINDER",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "warning"
+          },
+          "name": "SLA em 80 por cento",
+          "observed": "CREATE_INTERNAL_REMINDER",
+          "status": "PASS",
+          "test_id": "T10",
+          "workflow_id": 4
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-04:CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "expected": "CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "missing_next_step"
+          },
+          "name": "SLA sem next step",
+          "observed": "CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "status": "PASS",
+          "test_id": "T11",
+          "workflow_id": 4
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-04:NO_ACTION_ON_HOLD",
+          "expected": "NO_ACTION_ON_HOLD",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "on_hold_future"
+          },
+          "name": "On Hold futuro",
+          "observed": "NO_ACTION_ON_HOLD",
+          "status": "PASS",
+          "test_id": "T12",
+          "workflow_id": 4
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-05:NO_HYGIENE_ISSUE",
+          "expected": "NO_HYGIENE_ISSUE",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "clean"
+          },
+          "name": "registro íntegro",
+          "observed": "NO_HYGIENE_ISSUE",
+          "status": "PASS",
+          "test_id": "T13",
+          "workflow_id": 5
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-05:BLOCKED_EVENT_ORIGIN",
+          "expected": "BLOCKED_EVENT_ORIGIN",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "event_missing_origin"
+          },
+          "name": "evento sem origem",
+          "observed": "BLOCKED_EVENT_ORIGIN",
+          "status": "PASS",
+          "test_id": "T14",
+          "workflow_id": 5
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-05:QUEUE_DUPLICATE_REVIEW",
+          "expected": "QUEUE_DUPLICATE_REVIEW",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "fuzzy_duplicate"
+          },
+          "name": "duplicata fuzzy",
+          "observed": "QUEUE_DUPLICATE_REVIEW",
+          "status": "PASS",
+          "test_id": "T15",
+          "workflow_id": 5
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-06:ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "expected": "ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "external_action": false,
+          "inputs": {
+            "contract": "complete"
+          },
+          "name": "contrato completo",
+          "observed": "ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "status": "PASS",
+          "test_id": "T16",
+          "workflow_id": 6
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-06:BLOCKED_SYNTHETIC_FINANCIAL",
+          "expected": "BLOCKED_SYNTHETIC_FINANCIAL",
+          "external_action": false,
+          "inputs": {
+            "contract": "synthetic_amount"
+          },
+          "name": "rate card em amount",
+          "observed": "BLOCKED_SYNTHETIC_FINANCIAL",
+          "status": "PASS",
+          "test_id": "T17",
+          "workflow_id": 6
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-06:BLOCKED_CURRENCY_MISSING",
+          "expected": "BLOCKED_CURRENCY_MISSING",
+          "external_action": false,
+          "inputs": {
+            "contract": "missing_currency"
+          },
+          "name": "moeda ausente",
+          "observed": "BLOCKED_CURRENCY_MISSING",
+          "status": "PASS",
+          "test_id": "T18",
+          "workflow_id": 6
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-07:ARCHIVE_CASE_LOCAL",
+          "expected": "ARCHIVE_CASE_LOCAL",
+          "external_action": false,
+          "inputs": {
+            "analytics": "archive_case"
+          },
+          "name": "case arquivado",
+          "observed": "ARCHIVE_CASE_LOCAL",
+          "status": "PASS",
+          "test_id": "T19",
+          "workflow_id": 7
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-07:BLOCKED_SYNTHETIC_LEAKAGE",
+          "expected": "BLOCKED_SYNTHETIC_LEAKAGE",
+          "external_action": false,
+          "inputs": {
+            "analytics": "synthetic_leakage"
+          },
+          "name": "sintético em KPI",
+          "observed": "BLOCKED_SYNTHETIC_LEAKAGE",
+          "status": "PASS",
+          "test_id": "T20",
+          "workflow_id": 7
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-07:CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "expected": "CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "external_action": false,
+          "inputs": {
+            "analytics": "similar_real_opportunity"
+          },
+          "name": "oportunidade semelhante",
+          "observed": "CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "status": "PASS",
+          "test_id": "T21",
+          "workflow_id": 7
+        },
+        {
+          "category": "happy-guardrail",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "expected": "BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "external_action": false,
+          "inputs": {
+            "gate": "documented",
+            "scope": "case_synthetic"
+          },
+          "name": "gate documental não libera envio",
+          "observed": "BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "status": "PASS",
+          "test_id": "T22",
+          "workflow_id": 8
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_MISSING",
+          "expected": "BLOCKED_APPROVAL_GATE_MISSING",
+          "external_action": false,
+          "inputs": {
+            "gate": "missing",
+            "scope": "case_synthetic"
+          },
+          "name": "envio sem gate",
+          "observed": "BLOCKED_APPROVAL_GATE_MISSING",
+          "status": "PASS",
+          "test_id": "T23",
+          "workflow_id": 8
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "expected": "BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "external_action": false,
+          "inputs": {
+            "gate": "documented",
+            "opt_out": true,
+            "scope": "case_synthetic"
+          },
+          "name": "opt-out antes de envio",
+          "observed": "BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "status": "PASS",
+          "test_id": "T24",
+          "workflow_id": 8
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_REUSE",
+          "expected": "BLOCKED_APPROVAL_GATE_REUSE",
+          "external_action": false,
+          "inputs": {
+            "gate": "reused",
+            "scope": "case_synthetic"
+          },
+          "name": "re-enrollment",
+          "observed": "BLOCKED_APPROVAL_GATE_REUSE",
+          "status": "PASS",
+          "test_id": "T25",
+          "workflow_id": 8
+        },
+        {
+          "category": "conflict",
+          "evidence": "deterministic_rule:WF-03:SUPPRESS_ALL_CHANNELS",
+          "expected": "SUPPRESS_ALL_CHANNELS",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": true,
+            "opt_out": true,
+            "sla_state": "overdue"
+          },
+          "name": "SLA e opt-out",
+          "observed": "SUPPRESS_ALL_CHANNELS",
+          "status": "PASS",
+          "test_id": "T26",
+          "workflow_id": 3
+        },
+        {
+          "category": "conflict",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_CROSS_SCOPE",
+          "expected": "BLOCKED_CROSS_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "case_synthetic",
+            "stage_gate": "complete"
+          },
+          "name": "stage e scope",
+          "observed": "BLOCKED_CROSS_SCOPE",
+          "status": "PASS",
+          "test_id": "T27",
+          "workflow_id": 1
+        }
+      ]
+    },
+    "dataQuality": {
+      "title": "Data quality",
+      "executive": "5 registros aceitos localmente e 7 em quarentena, sobre 12 sintéticos.",
+      "sourceRefs": [
+        "artifacts/crm-outputs/data-hygiene-report.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/quarantine.csv",
+        "Case/technical-validation/2026-09-21-064413/evidence/rollback_evidence.json"
+      ],
+      "details": [
+        {
+          "accepted_local_only": 5,
+          "as_of": "2026-09-22T12:00:00-03:00",
+          "external_writes": 0,
+          "field_mapping": {
+            "amount": "Partnership Opportunity.amount",
+            "approval_decision": "Approval Gate.decision",
+            "approval_expires_at": "Approval Gate.expires_at",
+            "approval_scope": "Approval Gate.scope",
+            "brand_name": "Brand.brand_name",
+            "canonical_domain": "Brand.canonical_domain",
+            "currency": "Partnership Opportunity.currency",
+            "data_scope": "Shared.data_scope",
+            "event_type": "Outreach Event.event_type",
+            "evidence_id": "Outreach Event.evidence_id",
+            "execution_status": "Outreach Event.execution_status",
+            "external_event_id": "Outreach Event.external_event_id",
+            "fit_score": "Partnership Opportunity.fit_score",
+            "fit_score_status": "Partnership Opportunity.fit_score_status",
+            "forecast_category": "Partnership Opportunity.forecast_category",
+            "last_activity_at": "Partnership Opportunity.last_activity_at",
+            "lawful_basis_status": "Person.lawful_basis_status",
+            "message_template_version": "Outreach Event.message_template_version",
+            "next_step": "Partnership Opportunity.next_step",
+            "next_step_due_at": "Partnership Opportunity.next_step_due_at",
+            "object_type": "Staging.object_type",
+            "opt_out": "Person.opt_out",
+            "opt_out_at": "Person.opt_out_at",
+            "pipeline_key": "Partnership Opportunity.pipeline_key",
+            "pipeline_stage": "Partnership Opportunity.pipeline_stage",
+            "re_enrollment_key": "Workflow Simulation.re_enrollment_key",
+            "record_id": "Partnership Opportunity.record_id",
+            "record_owner": "Partnership Opportunity.record_owner",
+            "risk_flags": "Partnership Opportunity.risk_flags",
+            "source_artifact": "Partnership Opportunity.source_artifact",
+            "source_system": "Outreach Event.source_system",
+            "stage_entered_at": "Partnership Opportunity.stage_entered_at",
+            "synthetic_record": "Shared.synthetic_record"
+          },
+          "input_records": 12,
+          "mapped_fields": 33,
+          "mode": "DRY_RUN_LOCAL_SYNTHETIC",
+          "network_access": false,
+          "planned_diff": [
+            {
+              "action": "CREATE_LOCAL_ONLY",
+              "data_scope": "case_synthetic",
+              "record_id": "CASE-002",
+              "target": "sqlite_dry_run_records"
+            },
+            {
+              "action": "CREATE_LOCAL_ONLY",
+              "data_scope": "case_synthetic",
+              "record_id": "CASE-006",
+              "target": "sqlite_dry_run_records"
+            },
+            {
+              "action": "CREATE_LOCAL_ONLY",
+              "data_scope": "case_synthetic",
+              "record_id": "CASE-007",
+              "target": "sqlite_dry_run_records"
+            },
+            {
+              "action": "CREATE_LOCAL_ONLY",
+              "data_scope": "case_synthetic",
+              "record_id": "CASE-008",
+              "target": "sqlite_dry_run_records"
+            },
+            {
+              "action": "CREATE_LOCAL_ONLY",
+              "data_scope": "case_synthetic",
+              "record_id": "CASE-009",
+              "target": "sqlite_dry_run_records"
+            }
+          ],
+          "quarantined": 7,
+          "reason_code_counts": {
+            "Q02": 1,
+            "Q05": 1,
+            "Q06": 1,
+            "Q08": 2,
+            "Q10": 1,
+            "Q12": 1
+          },
+          "rollback_verified": true,
+          "run_id": "2026-09-21-064413",
+          "sla_overdue_accepted": 1,
+          "snapshot": {
+            "row_count": 0
+          },
+          "source": "data\\case_synthetic_source.csv",
+          "source_sha256": "272B24EBBB9BB3E0E9DB4CDD80E800532D0BCF0455080843B632F72F5B11D9C6"
+        },
+        {
+          "after_rollback": {
+            "row_count": 0
+          },
+          "database": "import_dry_run.sqlite",
+          "during_transaction": {
+            "row_count": 5
+          },
+          "engine": "sqlite3-stdlib-local-only",
+          "external_writes": 0,
+          "integrity_check": "ok",
+          "rollback_verified": true,
+          "snapshot_before": {
+            "row_count": 0
+          }
+        }
+      ]
+    },
+    "analytics": {
+      "title": "SQL e Python",
+      "executive": "6/6 queries reconciliadas entre SQL, Python e amostra manual.",
+      "sourceRefs": [
+        "artifacts/analytics-outputs/analytics-library.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/sql_query_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/python_analysis_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/analytics_reconciliation.json"
+      ],
+      "details": [
+        {
+          "sql": {
+            "Q1": [
+              {
+                "records": 1,
+                "stage": "Internal QA Complete"
+              },
+              {
+                "records": 4,
+                "stage": "Simulation Designed"
+              }
+            ],
+            "Q2": [
+              {
+                "lost": 0,
+                "records_with_amount": 0,
+                "won": 0
+              }
+            ],
+            "Q3": [
+              {
+                "overdue": 0,
+                "owner": "crm-ops",
+                "records": 4
+              },
+              {
+                "overdue": 1,
+                "owner": "qa-process",
+                "records": 1
+              }
+            ],
+            "Q4": [
+              {
+                "event_type": "opt_out",
+                "events": 1,
+                "opt_out_events": 1,
+                "simulation_only": 1
+              },
+              {
+                "event_type": "qa",
+                "events": 1,
+                "opt_out_events": 0,
+                "simulation_only": 1
+              },
+              {
+                "event_type": "touch",
+                "events": 3,
+                "opt_out_events": 0,
+                "simulation_only": 3
+              }
+            ],
+            "Q5": [
+              {
+                "occurrences": 1,
+                "reason_code": "Q02"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q05"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q06"
+              },
+              {
+                "occurrences": 2,
+                "reason_code": "Q08"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q10"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q12"
+              }
+            ],
+            "Q6": [
+              {
+                "avg_hours": 507,
+                "entries": 1,
+                "stage": "Internal QA Complete"
+              },
+              {
+                "avg_hours": 60,
+                "entries": 2,
+                "stage": "Research Documented"
+              },
+              {
+                "avg_hours": 57,
+                "entries": 5,
+                "stage": "Simulation Designed"
+              }
+            ]
+          },
+          "python": {
+            "Q1": [
+              {
+                "records": 1,
+                "stage": "Internal QA Complete"
+              },
+              {
+                "records": 4,
+                "stage": "Simulation Designed"
+              }
+            ],
+            "Q2": [
+              {
+                "lost": 0,
+                "records_with_amount": 0,
+                "won": 0
+              }
+            ],
+            "Q3": [
+              {
+                "overdue": 0,
+                "owner": "crm-ops",
+                "records": 4
+              },
+              {
+                "overdue": 1,
+                "owner": "qa-process",
+                "records": 1
+              }
+            ],
+            "Q4": [
+              {
+                "event_type": "opt_out",
+                "events": 1,
+                "opt_out_events": 1,
+                "simulation_only": 1
+              },
+              {
+                "event_type": "qa",
+                "events": 1,
+                "opt_out_events": 0,
+                "simulation_only": 1
+              },
+              {
+                "event_type": "touch",
+                "events": 3,
+                "opt_out_events": 0,
+                "simulation_only": 3
+              }
+            ],
+            "Q5": [
+              {
+                "occurrences": 1,
+                "reason_code": "Q02"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q05"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q06"
+              },
+              {
+                "occurrences": 2,
+                "reason_code": "Q08"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q10"
+              },
+              {
+                "occurrences": 1,
+                "reason_code": "Q12"
+              }
+            ],
+            "Q6": [
+              {
+                "avg_hours": 507,
+                "entries": 1,
+                "stage": "Internal QA Complete"
+              },
+              {
+                "avg_hours": 60,
+                "entries": 2,
+                "stage": "Research Documented"
+              },
+              {
+                "avg_hours": 57,
+                "entries": 5,
+                "stage": "Simulation Designed"
+              }
+            ]
+          },
+          "reconciliation": {
+            "dashboard": "dashboard\\index.html",
+            "dashboard_sha256": "BD3CDEBDCE9B33C1E871B2F296B0D8A8809CA0061DB8477A3621F62946E82F3A",
+            "data_scope": "case_synthetic",
+            "external_writes": 0,
+            "manual_sample": {
+              "accepted_count": 5,
+              "accepted_ids": [
+                "CASE-002",
+                "CASE-006",
+                "CASE-007",
+                "CASE-008",
+                "CASE-009"
+              ],
+              "overdue_accepted_ids": [
+                "CASE-006"
+              ],
+              "quarantined_count": 7,
+              "quarantined_ids": [
+                "CASE-001",
+                "CASE-003",
+                "CASE-004",
+                "CASE-005",
+                "CASE-010",
+                "CASE-011",
+                "CASE-012"
+              ]
+            },
+            "manual_sample_status": "PASS",
+            "network_access": false,
+            "queries_executed": 6,
+            "reconciliation": [
+              {
+                "query_id": "Q1",
+                "sql_equals_python": true,
+                "status": "PASS"
+              },
+              {
+                "query_id": "Q2",
+                "sql_equals_python": true,
+                "status": "PASS"
+              },
+              {
+                "query_id": "Q3",
+                "sql_equals_python": true,
+                "status": "PASS"
+              },
+              {
+                "query_id": "Q4",
+                "sql_equals_python": true,
+                "status": "PASS"
+              },
+              {
+                "query_id": "Q5",
+                "sql_equals_python": true,
+                "status": "PASS"
+              },
+              {
+                "query_id": "Q6",
+                "sql_equals_python": true,
+                "status": "PASS"
+              }
+            ],
+            "run_id": "2026-09-21-064413"
+          }
+        }
+      ]
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "executive": "Dashboard funcional exclusivamente sintético, com filtros, qualidade e empty state.",
+      "sourceRefs": [
+        "artifacts/analytics-outputs/dashboard-insights-spec.md",
+        "Case/technical-validation/2026-09-21-064413/dashboard/index.html"
+      ],
+      "details": [
+        "DADOS SINTÉTICOS — VALIDAÇÃO LOCAL",
+        "Não publicado e sem telemetria externa."
+      ]
+    },
+    "qa": {
+      "title": "QA",
+      "executive": "QA-001, QA-002 e QA-003 fechadas somente no escopo local/sintético; QA-004 permanece aberta.",
+      "sourceRefs": [
+        "artifacts/final-outputs/qa-signoff.md"
+      ],
+      "details": [
+        {
+          "id": "QA-001",
+          "status": "closed_local_synthetic",
+          "severity": "resolved",
+          "summary": "Workflows validados em simulador local."
+        },
+        {
+          "id": "QA-002",
+          "status": "closed_local_synthetic",
+          "severity": "resolved",
+          "summary": "Dry-run e rollback validados localmente."
+        },
+        {
+          "id": "QA-003",
+          "status": "closed_local_synthetic",
+          "severity": "resolved",
+          "summary": "SQL, Python, amostra manual e dashboard reconciliados."
+        },
+        {
+          "id": "QA-004",
+          "status": "open",
+          "severity": "low",
+          "summary": "Qualificação comercial real exige contatos e evidência fora do escopo."
+        }
+      ]
+    },
+    "limitations": {
+      "title": "Limitações",
+      "executive": "O case comprova desenho e execução local; não comprova performance comercial nem implementação em ambiente real.",
+      "sourceRefs": [
+        "artifacts/final-outputs/qa-signoff.md"
+      ],
+      "details": [
+        "Sem qualificação comercial real.",
+        "Sem outreach ou negociação real.",
+        "Sem CRM ou workflows em produção.",
+        "Sem receita, conversão ou interesse real.",
+        "Sem publicação externa."
+      ]
+    },
+    "evidence": {
+      "title": "Evidências",
+      "executive": "Cada afirmação tem origem, escopo e estado operacional visíveis.",
+      "sourceRefs": [
+        "artifacts/documentation-outputs/process-library.md",
+        "artifacts/final-outputs/qa-signoff.md"
+      ],
+      "details": [
+        "Case/input/briefing-criadora.md",
+        "artifacts/inputs-for-crm-ops/icp-and-fit.md",
+        "artifacts/inputs-for-crm-ops/prospecting-list.md",
+        "artifacts/inputs-for-crm-ops/outreach-playbook.md",
+        "artifacts/inputs-for-crm-ops/outreach-simulation-log.md",
+        "artifacts/inputs-for-crm-ops/deal-summaries.md",
+        "artifacts/inputs-for-crm-ops/pipeline-weekly-report.md",
+        "artifacts/inputs-for-crm-ops/handoff-manifest.md",
+        "artifacts/crm-outputs/crm-architecture-data-dictionary.md",
+        "artifacts/crm-outputs/lifecycle-playbook.md",
+        "artifacts/crm-outputs/workflow-documentation.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/workflow_test_results.json",
+        "artifacts/crm-outputs/data-hygiene-report.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/quarantine.csv",
+        "Case/technical-validation/2026-09-21-064413/evidence/rollback_evidence.json",
+        "artifacts/analytics-outputs/analytics-library.md",
+        "Case/technical-validation/2026-09-21-064413/evidence/sql_query_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/python_analysis_results.json",
+        "Case/technical-validation/2026-09-21-064413/evidence/analytics_reconciliation.json",
+        "artifacts/analytics-outputs/dashboard-insights-spec.md",
+        "Case/technical-validation/2026-09-21-064413/dashboard/index.html",
+        "artifacts/final-outputs/qa-signoff.md",
+        "artifacts/documentation-outputs/process-library.md"
+      ]
+    }
+  },
+  "sourceInventory": [
+    "Case/input/briefing-criadora.md",
+    "artifacts/inputs-for-crm-ops/icp-and-fit.md",
+    "artifacts/inputs-for-crm-ops/prospecting-list.md",
+    "artifacts/inputs-for-crm-ops/outreach-playbook.md",
+    "artifacts/inputs-for-crm-ops/outreach-simulation-log.md",
+    "artifacts/inputs-for-crm-ops/deal-summaries.md",
+    "artifacts/inputs-for-crm-ops/pipeline-weekly-report.md",
+    "artifacts/inputs-for-crm-ops/handoff-manifest.md",
+    "artifacts/crm-outputs/crm-architecture-data-dictionary.md",
+    "artifacts/crm-outputs/lifecycle-playbook.md",
+    "artifacts/crm-outputs/workflow-documentation.md",
+    "Case/technical-validation/2026-09-21-064413/evidence/workflow_test_results.json",
+    "artifacts/crm-outputs/data-hygiene-report.md",
+    "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json",
+    "Case/technical-validation/2026-09-21-064413/evidence/quarantine.csv",
+    "Case/technical-validation/2026-09-21-064413/evidence/rollback_evidence.json",
+    "artifacts/analytics-outputs/analytics-library.md",
+    "Case/technical-validation/2026-09-21-064413/evidence/sql_query_results.json",
+    "Case/technical-validation/2026-09-21-064413/evidence/python_analysis_results.json",
+    "Case/technical-validation/2026-09-21-064413/evidence/analytics_reconciliation.json",
+    "artifacts/analytics-outputs/dashboard-insights-spec.md",
+    "Case/technical-validation/2026-09-21-064413/dashboard/index.html",
+    "artifacts/final-outputs/qa-signoff.md",
+    "artifacts/documentation-outputs/process-library.md"
+  ],
+  "metrics": {
+    "workflowScenarios": {
+      "passed": 27,
+      "total": 27
+    },
+    "automatedTests": {
+      "passed": 11,
+      "total": 11
+    },
+    "reconciledQueries": {
+      "passed": 6,
+      "total": 6
+    },
+    "syntheticRecords": {
+      "accepted": 5,
+      "quarantined": 7,
+      "total": 12
+    },
+    "rollback": [
+      0,
+      5,
+      0
+    ],
+    "externalActions": 0,
+    "externalWrites": 0
+  },
+  "quarantineReasons": {
+    "Q02": {
+      "label": "identidade ausente",
+      "occurrences": 1
+    },
+    "Q05": {
+      "label": "gate, campo ou evidência de stage ausente",
+      "occurrences": 1
+    },
+    "Q06": {
+      "label": "financeiro sintético inválido",
+      "occurrences": 1
+    },
+    "Q08": {
+      "label": "duplicidade",
+      "occurrences": 2
+    },
+    "Q10": {
+      "label": "opt-out conflitante ou incompleto",
+      "occurrences": 1
+    },
+    "Q12": {
+      "label": "owner ausente ou inativo",
+      "occurrences": 1
+    }
+  },
+  "claims": [
+    {
+      "id": "workflow-pass",
+      "value": "27/27",
+      "scope": "case_synthetic",
+      "execution": "local",
+      "sourceRef": "Case/technical-validation/2026-09-21-064413/evidence/workflow_test_results.json"
+    },
+    {
+      "id": "records",
+      "value": 12,
+      "scope": "case_synthetic",
+      "execution": "local",
+      "sourceRef": "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json"
+    },
+    {
+      "id": "accepted",
+      "value": 5,
+      "scope": "case_synthetic",
+      "execution": "local",
+      "sourceRef": "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json"
+    },
+    {
+      "id": "quarantined",
+      "value": 7,
+      "scope": "case_synthetic",
+      "execution": "local",
+      "sourceRef": "Case/technical-validation/2026-09-21-064413/evidence/import_dry_run_results.json"
+    },
+    {
+      "id": "queries",
+      "value": 6,
+      "scope": "case_synthetic",
+      "execution": "local",
+      "sourceRef": "Case/technical-validation/2026-09-21-064413/evidence/analytics_reconciliation.json"
+    }
+  ],
+  "qa": [
+    {
+      "id": "QA-001",
+      "status": "closed_local_synthetic",
+      "severity": "resolved",
+      "summary": "Workflows validados em simulador local."
+    },
+    {
+      "id": "QA-002",
+      "status": "closed_local_synthetic",
+      "severity": "resolved",
+      "summary": "Dry-run e rollback validados localmente."
+    },
+    {
+      "id": "QA-003",
+      "status": "closed_local_synthetic",
+      "severity": "resolved",
+      "summary": "SQL, Python, amostra manual e dashboard reconciliados."
+    },
+    {
+      "id": "QA-004",
+      "status": "open",
+      "severity": "low",
+      "summary": "Qualificação comercial real exige contatos e evidência fora do escopo."
+    }
+  ],
+  "evidence": {
+    "workflow": {
+      "external_actions": 0,
+      "failed": 0,
+      "mode": "LOCAL_DETERMINISTIC_SIMULATION",
+      "passed": 27,
+      "results": [
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-01:ALLOW_SCOPE",
+          "expected": "ALLOW_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "production_real"
+          },
+          "name": "escopo coerente",
+          "observed": "ALLOW_SCOPE",
+          "status": "PASS",
+          "test_id": "T01",
+          "workflow_id": 1
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_CROSS_SCOPE",
+          "expected": "BLOCKED_CROSS_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "case_synthetic"
+          },
+          "name": "cross-scope",
+          "observed": "BLOCKED_CROSS_SCOPE",
+          "status": "PASS",
+          "test_id": "T02",
+          "workflow_id": 1
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_SCOPE_MISSING",
+          "expected": "BLOCKED_SCOPE_MISSING",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": ""
+          },
+          "name": "escopo ausente",
+          "observed": "BLOCKED_SCOPE_MISSING",
+          "status": "PASS",
+          "test_id": "T03",
+          "workflow_id": 1
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-02:ALLOW_STAGE_TRANSITION",
+          "expected": "ALLOW_STAGE_TRANSITION",
+          "external_action": false,
+          "inputs": {
+            "evidence": true,
+            "transition": "next"
+          },
+          "name": "gate completo",
+          "observed": "ALLOW_STAGE_TRANSITION",
+          "status": "PASS",
+          "test_id": "T04",
+          "workflow_id": 2
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-02:BLOCKED_EVIDENCE",
+          "expected": "BLOCKED_EVIDENCE",
+          "external_action": false,
+          "inputs": {
+            "evidence": false,
+            "transition": "next"
+          },
+          "name": "evidência ausente",
+          "observed": "BLOCKED_EVIDENCE",
+          "status": "PASS",
+          "test_id": "T05",
+          "workflow_id": 2
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-02:BLOCKED_STAGE_JUMP",
+          "expected": "BLOCKED_STAGE_JUMP",
+          "external_action": false,
+          "inputs": {
+            "evidence": true,
+            "transition": "jump"
+          },
+          "name": "salto de stage",
+          "observed": "BLOCKED_STAGE_JUMP",
+          "status": "PASS",
+          "test_id": "T06",
+          "workflow_id": 2
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-03:SUPPRESS_ALL_CHANNELS",
+          "expected": "SUPPRESS_ALL_CHANNELS",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": true,
+            "opt_out": true
+          },
+          "name": "opt-out com evidência",
+          "observed": "SUPPRESS_ALL_CHANNELS",
+          "status": "PASS",
+          "test_id": "T07",
+          "workflow_id": 3
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-03:BLOCKED_EVENT_EVIDENCE",
+          "expected": "BLOCKED_EVENT_EVIDENCE",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": false,
+            "opt_out": true
+          },
+          "name": "opt-out sem origem",
+          "observed": "BLOCKED_EVENT_EVIDENCE",
+          "status": "PASS",
+          "test_id": "T08",
+          "workflow_id": 3
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-03:IGNORED_DUPLICATE_EVENT",
+          "expected": "IGNORED_DUPLICATE_EVENT",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": true,
+            "evidence": true,
+            "opt_out": true
+          },
+          "name": "evento repetido",
+          "observed": "IGNORED_DUPLICATE_EVENT",
+          "status": "PASS",
+          "test_id": "T09",
+          "workflow_id": 3
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-04:CREATE_INTERNAL_REMINDER",
+          "expected": "CREATE_INTERNAL_REMINDER",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "warning"
+          },
+          "name": "SLA em 80 por cento",
+          "observed": "CREATE_INTERNAL_REMINDER",
+          "status": "PASS",
+          "test_id": "T10",
+          "workflow_id": 4
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-04:CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "expected": "CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "missing_next_step"
+          },
+          "name": "SLA sem next step",
+          "observed": "CREATE_HYGIENE_TASK_NO_STAGE_MOVE",
+          "status": "PASS",
+          "test_id": "T11",
+          "workflow_id": 4
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-04:NO_ACTION_ON_HOLD",
+          "expected": "NO_ACTION_ON_HOLD",
+          "external_action": false,
+          "inputs": {
+            "sla_state": "on_hold_future"
+          },
+          "name": "On Hold futuro",
+          "observed": "NO_ACTION_ON_HOLD",
+          "status": "PASS",
+          "test_id": "T12",
+          "workflow_id": 4
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-05:NO_HYGIENE_ISSUE",
+          "expected": "NO_HYGIENE_ISSUE",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "clean"
+          },
+          "name": "registro íntegro",
+          "observed": "NO_HYGIENE_ISSUE",
+          "status": "PASS",
+          "test_id": "T13",
+          "workflow_id": 5
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-05:BLOCKED_EVENT_ORIGIN",
+          "expected": "BLOCKED_EVENT_ORIGIN",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "event_missing_origin"
+          },
+          "name": "evento sem origem",
+          "observed": "BLOCKED_EVENT_ORIGIN",
+          "status": "PASS",
+          "test_id": "T14",
+          "workflow_id": 5
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-05:QUEUE_DUPLICATE_REVIEW",
+          "expected": "QUEUE_DUPLICATE_REVIEW",
+          "external_action": false,
+          "inputs": {
+            "hygiene": "fuzzy_duplicate"
+          },
+          "name": "duplicata fuzzy",
+          "observed": "QUEUE_DUPLICATE_REVIEW",
+          "status": "PASS",
+          "test_id": "T15",
+          "workflow_id": 5
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-06:ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "expected": "ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "external_action": false,
+          "inputs": {
+            "contract": "complete"
+          },
+          "name": "contrato completo",
+          "observed": "ALLOW_CLOSED_WON_LOCAL_VALIDATION",
+          "status": "PASS",
+          "test_id": "T16",
+          "workflow_id": 6
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-06:BLOCKED_SYNTHETIC_FINANCIAL",
+          "expected": "BLOCKED_SYNTHETIC_FINANCIAL",
+          "external_action": false,
+          "inputs": {
+            "contract": "synthetic_amount"
+          },
+          "name": "rate card em amount",
+          "observed": "BLOCKED_SYNTHETIC_FINANCIAL",
+          "status": "PASS",
+          "test_id": "T17",
+          "workflow_id": 6
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-06:BLOCKED_CURRENCY_MISSING",
+          "expected": "BLOCKED_CURRENCY_MISSING",
+          "external_action": false,
+          "inputs": {
+            "contract": "missing_currency"
+          },
+          "name": "moeda ausente",
+          "observed": "BLOCKED_CURRENCY_MISSING",
+          "status": "PASS",
+          "test_id": "T18",
+          "workflow_id": 6
+        },
+        {
+          "category": "happy",
+          "evidence": "deterministic_rule:WF-07:ARCHIVE_CASE_LOCAL",
+          "expected": "ARCHIVE_CASE_LOCAL",
+          "external_action": false,
+          "inputs": {
+            "analytics": "archive_case"
+          },
+          "name": "case arquivado",
+          "observed": "ARCHIVE_CASE_LOCAL",
+          "status": "PASS",
+          "test_id": "T19",
+          "workflow_id": 7
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-07:BLOCKED_SYNTHETIC_LEAKAGE",
+          "expected": "BLOCKED_SYNTHETIC_LEAKAGE",
+          "external_action": false,
+          "inputs": {
+            "analytics": "synthetic_leakage"
+          },
+          "name": "sintético em KPI",
+          "observed": "BLOCKED_SYNTHETIC_LEAKAGE",
+          "status": "PASS",
+          "test_id": "T20",
+          "workflow_id": 7
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-07:CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "expected": "CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "external_action": false,
+          "inputs": {
+            "analytics": "similar_real_opportunity"
+          },
+          "name": "oportunidade semelhante",
+          "observed": "CREATE_NEW_REAL_RECORD_NO_PROMOTION",
+          "status": "PASS",
+          "test_id": "T21",
+          "workflow_id": 7
+        },
+        {
+          "category": "happy-guardrail",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "expected": "BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "external_action": false,
+          "inputs": {
+            "gate": "documented",
+            "scope": "case_synthetic"
+          },
+          "name": "gate documental não libera envio",
+          "observed": "BLOCKED_APPROVAL_GATE_NOT_LIVE",
+          "status": "PASS",
+          "test_id": "T22",
+          "workflow_id": 8
+        },
+        {
+          "category": "error",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_MISSING",
+          "expected": "BLOCKED_APPROVAL_GATE_MISSING",
+          "external_action": false,
+          "inputs": {
+            "gate": "missing",
+            "scope": "case_synthetic"
+          },
+          "name": "envio sem gate",
+          "observed": "BLOCKED_APPROVAL_GATE_MISSING",
+          "status": "PASS",
+          "test_id": "T23",
+          "workflow_id": 8
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "expected": "BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "external_action": false,
+          "inputs": {
+            "gate": "documented",
+            "opt_out": true,
+            "scope": "case_synthetic"
+          },
+          "name": "opt-out antes de envio",
+          "observed": "BLOCKED_APPROVAL_GATE_REVOKED_BY_OPTOUT",
+          "status": "PASS",
+          "test_id": "T24",
+          "workflow_id": 8
+        },
+        {
+          "category": "edge",
+          "evidence": "deterministic_rule:WF-08:BLOCKED_APPROVAL_GATE_REUSE",
+          "expected": "BLOCKED_APPROVAL_GATE_REUSE",
+          "external_action": false,
+          "inputs": {
+            "gate": "reused",
+            "scope": "case_synthetic"
+          },
+          "name": "re-enrollment",
+          "observed": "BLOCKED_APPROVAL_GATE_REUSE",
+          "status": "PASS",
+          "test_id": "T25",
+          "workflow_id": 8
+        },
+        {
+          "category": "conflict",
+          "evidence": "deterministic_rule:WF-03:SUPPRESS_ALL_CHANNELS",
+          "expected": "SUPPRESS_ALL_CHANNELS",
+          "external_action": false,
+          "inputs": {
+            "event_repeated": false,
+            "evidence": true,
+            "opt_out": true,
+            "sla_state": "overdue"
+          },
+          "name": "SLA e opt-out",
+          "observed": "SUPPRESS_ALL_CHANNELS",
+          "status": "PASS",
+          "test_id": "T26",
+          "workflow_id": 3
+        },
+        {
+          "category": "conflict",
+          "evidence": "deterministic_rule:WF-01:BLOCKED_CROSS_SCOPE",
+          "expected": "BLOCKED_CROSS_SCOPE",
+          "external_action": false,
+          "inputs": {
+            "related_scope": "production_real",
+            "scope": "case_synthetic",
+            "stage_gate": "complete"
+          },
+          "name": "stage e scope",
+          "observed": "BLOCKED_CROSS_SCOPE",
+          "status": "PASS",
+          "test_id": "T27",
+          "workflow_id": 1
+        }
+      ],
+      "run_id": "2026-09-21-064413",
+      "total": 27,
+      "wf08_policy": "Approval Gate externo é inválido para case_synthetic; nenhum envio é possível."
+    },
+    "dryRun": {
+      "accepted_local_only": 5,
+      "as_of": "2026-09-22T12:00:00-03:00",
+      "external_writes": 0,
+      "field_mapping": {
+        "amount": "Partnership Opportunity.amount",
+        "approval_decision": "Approval Gate.decision",
+        "approval_expires_at": "Approval Gate.expires_at",
+        "approval_scope": "Approval Gate.scope",
+        "brand_name": "Brand.brand_name",
+        "canonical_domain": "Brand.canonical_domain",
+        "currency": "Partnership Opportunity.currency",
+        "data_scope": "Shared.data_scope",
+        "event_type": "Outreach Event.event_type",
+        "evidence_id": "Outreach Event.evidence_id",
+        "execution_status": "Outreach Event.execution_status",
+        "external_event_id": "Outreach Event.external_event_id",
+        "fit_score": "Partnership Opportunity.fit_score",
+        "fit_score_status": "Partnership Opportunity.fit_score_status",
+        "forecast_category": "Partnership Opportunity.forecast_category",
+        "last_activity_at": "Partnership Opportunity.last_activity_at",
+        "lawful_basis_status": "Person.lawful_basis_status",
+        "message_template_version": "Outreach Event.message_template_version",
+        "next_step": "Partnership Opportunity.next_step",
+        "next_step_due_at": "Partnership Opportunity.next_step_due_at",
+        "object_type": "Staging.object_type",
+        "opt_out": "Person.opt_out",
+        "opt_out_at": "Person.opt_out_at",
+        "pipeline_key": "Partnership Opportunity.pipeline_key",
+        "pipeline_stage": "Partnership Opportunity.pipeline_stage",
+        "re_enrollment_key": "Workflow Simulation.re_enrollment_key",
+        "record_id": "Partnership Opportunity.record_id",
+        "record_owner": "Partnership Opportunity.record_owner",
+        "risk_flags": "Partnership Opportunity.risk_flags",
+        "source_artifact": "Partnership Opportunity.source_artifact",
+        "source_system": "Outreach Event.source_system",
+        "stage_entered_at": "Partnership Opportunity.stage_entered_at",
+        "synthetic_record": "Shared.synthetic_record"
+      },
+      "input_records": 12,
+      "mapped_fields": 33,
+      "mode": "DRY_RUN_LOCAL_SYNTHETIC",
+      "network_access": false,
+      "planned_diff": [
+        {
+          "action": "CREATE_LOCAL_ONLY",
+          "data_scope": "case_synthetic",
+          "record_id": "CASE-002",
+          "target": "sqlite_dry_run_records"
+        },
+        {
+          "action": "CREATE_LOCAL_ONLY",
+          "data_scope": "case_synthetic",
+          "record_id": "CASE-006",
+          "target": "sqlite_dry_run_records"
+        },
+        {
+          "action": "CREATE_LOCAL_ONLY",
+          "data_scope": "case_synthetic",
+          "record_id": "CASE-007",
+          "target": "sqlite_dry_run_records"
+        },
+        {
+          "action": "CREATE_LOCAL_ONLY",
+          "data_scope": "case_synthetic",
+          "record_id": "CASE-008",
+          "target": "sqlite_dry_run_records"
+        },
+        {
+          "action": "CREATE_LOCAL_ONLY",
+          "data_scope": "case_synthetic",
+          "record_id": "CASE-009",
+          "target": "sqlite_dry_run_records"
+        }
+      ],
+      "quarantined": 7,
+      "reason_code_counts": {
+        "Q02": 1,
+        "Q05": 1,
+        "Q06": 1,
+        "Q08": 2,
+        "Q10": 1,
+        "Q12": 1
+      },
+      "rollback_verified": true,
+      "run_id": "2026-09-21-064413",
+      "sla_overdue_accepted": 1,
+      "snapshot": {
+        "row_count": 0
+      },
+      "source": "data\\case_synthetic_source.csv",
+      "source_sha256": "272B24EBBB9BB3E0E9DB4CDD80E800532D0BCF0455080843B632F72F5B11D9C6"
+    },
+    "rollback": {
+      "after_rollback": {
+        "row_count": 0
+      },
+      "database": "import_dry_run.sqlite",
+      "during_transaction": {
+        "row_count": 5
+      },
+      "engine": "sqlite3-stdlib-local-only",
+      "external_writes": 0,
+      "integrity_check": "ok",
+      "rollback_verified": true,
+      "snapshot_before": {
+        "row_count": 0
+      }
+    },
+    "sql": {
+      "Q1": [
+        {
+          "records": 1,
+          "stage": "Internal QA Complete"
+        },
+        {
+          "records": 4,
+          "stage": "Simulation Designed"
+        }
+      ],
+      "Q2": [
+        {
+          "lost": 0,
+          "records_with_amount": 0,
+          "won": 0
+        }
+      ],
+      "Q3": [
+        {
+          "overdue": 0,
+          "owner": "crm-ops",
+          "records": 4
+        },
+        {
+          "overdue": 1,
+          "owner": "qa-process",
+          "records": 1
+        }
+      ],
+      "Q4": [
+        {
+          "event_type": "opt_out",
+          "events": 1,
+          "opt_out_events": 1,
+          "simulation_only": 1
+        },
+        {
+          "event_type": "qa",
+          "events": 1,
+          "opt_out_events": 0,
+          "simulation_only": 1
+        },
+        {
+          "event_type": "touch",
+          "events": 3,
+          "opt_out_events": 0,
+          "simulation_only": 3
+        }
+      ],
+      "Q5": [
+        {
+          "occurrences": 1,
+          "reason_code": "Q02"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q05"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q06"
+        },
+        {
+          "occurrences": 2,
+          "reason_code": "Q08"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q10"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q12"
+        }
+      ],
+      "Q6": [
+        {
+          "avg_hours": 507,
+          "entries": 1,
+          "stage": "Internal QA Complete"
+        },
+        {
+          "avg_hours": 60,
+          "entries": 2,
+          "stage": "Research Documented"
+        },
+        {
+          "avg_hours": 57,
+          "entries": 5,
+          "stage": "Simulation Designed"
+        }
+      ]
+    },
+    "python": {
+      "Q1": [
+        {
+          "records": 1,
+          "stage": "Internal QA Complete"
+        },
+        {
+          "records": 4,
+          "stage": "Simulation Designed"
+        }
+      ],
+      "Q2": [
+        {
+          "lost": 0,
+          "records_with_amount": 0,
+          "won": 0
+        }
+      ],
+      "Q3": [
+        {
+          "overdue": 0,
+          "owner": "crm-ops",
+          "records": 4
+        },
+        {
+          "overdue": 1,
+          "owner": "qa-process",
+          "records": 1
+        }
+      ],
+      "Q4": [
+        {
+          "event_type": "opt_out",
+          "events": 1,
+          "opt_out_events": 1,
+          "simulation_only": 1
+        },
+        {
+          "event_type": "qa",
+          "events": 1,
+          "opt_out_events": 0,
+          "simulation_only": 1
+        },
+        {
+          "event_type": "touch",
+          "events": 3,
+          "opt_out_events": 0,
+          "simulation_only": 3
+        }
+      ],
+      "Q5": [
+        {
+          "occurrences": 1,
+          "reason_code": "Q02"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q05"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q06"
+        },
+        {
+          "occurrences": 2,
+          "reason_code": "Q08"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q10"
+        },
+        {
+          "occurrences": 1,
+          "reason_code": "Q12"
+        }
+      ],
+      "Q6": [
+        {
+          "avg_hours": 507,
+          "entries": 1,
+          "stage": "Internal QA Complete"
+        },
+        {
+          "avg_hours": 60,
+          "entries": 2,
+          "stage": "Research Documented"
+        },
+        {
+          "avg_hours": 57,
+          "entries": 5,
+          "stage": "Simulation Designed"
+        }
+      ]
+    },
+    "reconciliation": {
+      "dashboard": "dashboard\\index.html",
+      "dashboard_sha256": "BD3CDEBDCE9B33C1E871B2F296B0D8A8809CA0061DB8477A3621F62946E82F3A",
+      "data_scope": "case_synthetic",
+      "external_writes": 0,
+      "manual_sample": {
+        "accepted_count": 5,
+        "accepted_ids": [
+          "CASE-002",
+          "CASE-006",
+          "CASE-007",
+          "CASE-008",
+          "CASE-009"
+        ],
+        "overdue_accepted_ids": [
+          "CASE-006"
+        ],
+        "quarantined_count": 7,
+        "quarantined_ids": [
+          "CASE-001",
+          "CASE-003",
+          "CASE-004",
+          "CASE-005",
+          "CASE-010",
+          "CASE-011",
+          "CASE-012"
+        ]
+      },
+      "manual_sample_status": "PASS",
+      "network_access": false,
+      "queries_executed": 6,
+      "reconciliation": [
+        {
+          "query_id": "Q1",
+          "sql_equals_python": true,
+          "status": "PASS"
+        },
+        {
+          "query_id": "Q2",
+          "sql_equals_python": true,
+          "status": "PASS"
+        },
+        {
+          "query_id": "Q3",
+          "sql_equals_python": true,
+          "status": "PASS"
+        },
+        {
+          "query_id": "Q4",
+          "sql_equals_python": true,
+          "status": "PASS"
+        },
+        {
+          "query_id": "Q5",
+          "sql_equals_python": true,
+          "status": "PASS"
+        },
+        {
+          "query_id": "Q6",
+          "sql_equals_python": true,
+          "status": "PASS"
+        }
+      ],
+      "run_id": "2026-09-21-064413"
+    }
+  },
+  "hashes": {
+    "case_synthetic_source.csv": "272B24EBBB9BB3E0E9DB4CDD80E800532D0BCF0455080843B632F72F5B11D9C6",
+    "case_synthetic_stage_history.csv": "07D90066E8F1B9163F377E779FE2519D40622725BF7C8A15935BBE1B79164F14",
+    "import_dry_run_results.json": "18AFAE600753AB041018A2D4B53A883260C2935A7F2577C9DC47594F6EF175A8",
+    "workflow_test_results.json": "7B9426F1B147AE350ECD0DB50BE405011E8722A7657DC7B2ACB5E03FF050C05E",
+    "analytics_reconciliation.json": "898C0818674B09F9AF0266B317A990BFD6337B5358566988ECEB018A6E51A54F",
+    "dashboard/index.html": "BD3CDEBDCE9B33C1E871B2F296B0D8A8809CA0061DB8477A3621F62946E82F3A"
+  }
+}

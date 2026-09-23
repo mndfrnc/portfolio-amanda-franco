@@ -1,0 +1,43 @@
+:root {
+  --color-cream: #F6EFDF;
+  --color-ink: #121210;
+  --color-paper: #FFFAF0;
+  --color-pink: #EFA8CE;
+  --color-yellow: #F4D25C;
+  --color-blue: #ADC3E7;
+  --color-olive: #9DAB61;
+  --color-critical: #BD4E49;
+  --color-muted: #6A665E;
+  --color-line: #2F2E2A;
+  --surface-page: var(--color-cream);
+  --surface-panel: var(--color-paper);
+  --text-primary: var(--color-ink);
+  --text-muted: var(--color-muted);
+  --status-info: var(--color-blue);
+  --status-success: var(--color-olive);
+  --status-warning: var(--color-yellow);
+  --status-blocked: var(--color-critical);
+  --font-sans: Manrope, "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  --step--1: clamp(.75rem, .71rem + .18vw, .875rem);
+  --step-0: clamp(.9375rem, .89rem + .2vw, 1.0625rem);
+  --step-1: clamp(1.125rem, 1rem + .55vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  --step-3: clamp(2.1rem, 1.55rem + 2.2vw, 3.5rem);
+  --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem;
+  --space-5: 1.5rem; --space-6: 2rem; --space-7: 3rem; --space-8: 4.5rem;
+  --radius-sm: .65rem; --radius-md: 1rem; --radius-lg: 1.5rem; --radius-pill: 999px;
+  --border: 1.5px solid var(--color-line);
+  --shadow: 0 .65rem 0 rgba(18, 18, 16, .12);
+  --content-max: 90rem;
+  --duration: 180ms;
+  --ease: cubic-bezier(.2,.8,.2,1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --duration: 0ms; }
+}
+
+@media (forced-colors: active) {
+  :root { --border: 2px solid CanvasText; }
+}
