@@ -32,3 +32,23 @@ test("dashboard payload is reconciled with the analysis", async () => {
   assert.equal(dashboard.kpis.engaging_90_plus, 1479);
   assert.equal(dashboard.priority_queue.length, 1589);
 });
+
+test("standalone dashboard preserves the validated data experience", async () => {
+  const page = await readFile(new URL("../src/pages/pipeline-health/dashboard.astro", import.meta.url), "utf8");
+  const casePage = await readFile(new URL("../src/pages/pipeline-health.astro", import.meta.url), "utf8");
+  const styles = await readFile(new URL("../src/styles/pipeline-dashboard.css", import.meta.url), "utf8");
+
+  for (const marker of [
+    "/pipeline-health/data/dashboard.json",
+    "12/08/2026",
+    "filter-region",
+    "monthly-chart",
+    "queue-table",
+  ]) assert.match(page, new RegExp(marker.replace(/[+]/g, "\\+")));
+
+  assert.match(casePage, /href=["']\/pipeline-health\/dashboard["']/);
+  assert.match(casePage, /12\/08\/2026/);
+  assert.match(styles, /--dash-ink:\s*#101b3f/i);
+  assert.match(styles, /--dash-lime:\s*#dfff5f/i);
+  assert.match(styles, /--dash-magenta:\s*#e83e8c/i);
+});

@@ -13,7 +13,9 @@ function fillSelect(id, values) {
 }
 
 function renderFindings(findings) {
-  byId("finding-grid").innerHTML = findings.map((finding) => `
+  const target = byId("finding-grid");
+  if (!target) return;
+  target.innerHTML = findings.map((finding) => `
     <article class="finding-card">
       <span>${escapeHtml(finding.title)}</span>
       <strong>${escapeHtml(finding.value)}</strong>

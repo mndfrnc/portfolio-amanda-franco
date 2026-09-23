@@ -1,0 +1,94 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/pipeline-health.css";
+import "../../styles/pipeline-dashboard.css";
+---
+
+<Layout
+  title="Pipeline Health Dashboard | Amanda Franco"
+  description="Dashboard explorável de saúde do pipeline, desempenho comercial e fila de oportunidades para revisão."
+>
+  <a class="skip-link" href="#dashboard-main">Pular para o dashboard</a>
+
+  <header class="dash-header">
+    <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
+      <img src="/identidade/wordmark-amanda.svg" alt="Amanda Franco" width="149" height="31" />
+    </a>
+    <nav aria-label="Navegação do dashboard">
+      <a href="/pipeline-health">Ver case completo</a>
+      <a href="/">Portfólio</a>
+    </nav>
+  </header>
+
+  <main id="dashboard-main" class="standalone-dashboard" data-dashboard-endpoint="/pipeline-health/data/dashboard.json">
+    <section class="dash-hero">
+      <div>
+        <p class="dash-kicker">CRM &amp; Revenue Operations</p>
+        <h1>Pipeline Health</h1>
+        <p>Desempenho comercial, envelhecimento do backlog e uma fila de revisão baseada em dados.</p>
+      </div>
+      <div class="dash-date"><span></span><small>Atualizado em</small><strong>12/08/2026</strong></div>
+    </section>
+
+    <section class="dashboard dashboard--standalone" aria-labelledby="dashboard-title">
+      <div class="dashboard__intro">
+        <div class="section-heading">
+          <p class="eyebrow">Dashboard explorável</p>
+          <h2 id="dashboard-title">Saúde do pipeline e fila de ação</h2>
+          <p>Os indicadores principais mostram a operação completa. Os filtros atuam sobre o backlog em Engaging e ajudam a encontrar onde agir primeiro.</p>
+        </div>
+        <p class="data-stamp"><span></span> Dados públicos e fictícios · execução local</p>
+      </div>
+
+      <div class="dashboard__filters" aria-label="Filtros do backlog">
+        <label>Região<select id="filter-region"><option value="">Todas</option></select></label>
+        <label>Gestor<select id="filter-manager"><option value="">Todos</option></select></label>
+        <label>Responsável<select id="filter-agent"><option value="">Todos</option></select></label>
+        <label>Produto<select id="filter-product"><option value="">Todos</option></select></label>
+        <label>Prioridade<select id="filter-priority"><option value="">Todas</option></select></label>
+        <button type="button" id="clear-filters">Limpar filtros</button>
+      </div>
+
+      <div class="kpi-grid" aria-live="polite">
+        <article><span>Oportunidades analisadas</span><strong id="kpi-source">—</strong><small>base completa</small></article>
+        <article><span>Receita ganha</span><strong id="kpi-revenue">—</strong><small>negócios Won</small></article>
+        <article><span>Win rate</span><strong id="kpi-win-rate">—</strong><small>Won ÷ fechados</small></article>
+        <article><span>Ciclo mediano</span><strong id="kpi-cycle">—</strong><small>dias até fechamento</small></article>
+      </div>
+
+      <div class="dashboard__grid">
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Histórico</span><h3>Receita e win rate por mês</h3></div><p>Volume e conversão vistos em conjunto.</p></div>
+          <div id="monthly-chart" class="monthly-chart" role="img" aria-label="Receita e win rate mensal"></div>
+        </article>
+        <article class="panel">
+          <div class="panel__heading"><div><span>Backlog filtrado</span><h3>Idade em Engaging</h3></div></div>
+          <div id="age-chart" class="bar-list"></div>
+        </article>
+        <article class="panel panel--signal">
+          <div class="panel__heading"><div><span>Backlog filtrado</span><h3>Resumo para ação</h3></div></div>
+          <dl class="action-summary">
+            <div><dt>Oportunidades</dt><dd id="action-count">—</dd></div>
+            <div><dt>90+ dias</dt><dd id="action-aged">—</dd></div>
+            <div><dt>Conta ausente</dt><dd id="action-missing">—</dd></div>
+            <div><dt>Valor de referência*</dt><dd id="action-value">—</dd></div>
+          </dl>
+          <p class="panel__note">* Soma do preço de lista. Não representa forecast.</p>
+        </article>
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Portfólio</span><h3>Desempenho por produto</h3></div><p>Receita, conversão e volume separam escala de eficiência.</p></div>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Fechados</th><th>Win rate</th><th>Receita</th><th>Preço realizado</th></tr></thead><tbody id="product-table"></tbody></table></div>
+        </article>
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Fila operacional</span><h3>Oportunidades para revisão</h3></div><p id="queue-status" role="status">Carregando dados…</p></div>
+          <div class="table-wrap"><table><thead><tr><th>Prioridade</th><th>Oportunidade</th><th>Responsável</th><th>Região</th><th>Produto</th><th>Conta</th><th>Idade</th><th>Motivo</th></tr></thead><tbody id="queue-table"></tbody></table></div>
+          <button type="button" class="load-more" id="load-more">Mostrar mais</button>
+        </article>
+      </div>
+    </section>
+
+    <p class="dash-source">Fonte: CRM Sales Opportunities, Maven Analytics — conjunto público, fictício e em domínio público. Nenhuma ação foi executada em CRM real.</p>
+  </main>
+
+  <script type="module" src="/pipeline-health/app.js"></script>
+</Layout>

@@ -28,6 +28,8 @@ body { background: #f4f2ed; color: var(--case-ink); }
 .hero__lead { max-width: 760px; margin-top: 2rem; font-size: clamp(1.2rem, 2.2vw, 1.8rem); line-height: 1.35; }
 .hero__meta { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 2rem; }
 .hero__meta span { padding: .45rem .8rem; border: 1px solid #bfc6cd; border-radius: 999px; font-size: .74rem; font-weight: 650; }
+.dashboard-cta { display: inline-flex; align-items: center; gap: .45rem; margin-top: 1.25rem; padding: .8rem 1rem; border-radius: 999px; background: var(--case-ink); color: white; font-size: .82rem; font-weight: 700; text-decoration: none; }
+.dashboard-cta:hover { background: var(--magenta); }
 .hero__signal { padding: clamp(1.5rem, 4vw, 2.4rem); border-radius: 22px; background: var(--case-ink); color: white; transform: rotate(1.25deg); }
 .hero__signal-label { color: var(--case-lime); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
 .hero__signal strong { display: block; margin-block: 1rem .7rem; font-family: var(--font-serif); font-size: clamp(4rem, 8vw, 7rem); line-height: .85; }
