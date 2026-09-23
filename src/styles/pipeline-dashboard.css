@@ -7,7 +7,7 @@
 
 body { background: var(--dash-ink); }
 .dash-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem clamp(1rem, 4vw, 4rem); background: var(--dash-ink); color: white; }
-.dash-header .brand img { width: 132px; filter: brightness(0) invert(1); }
+.dash-header .brand img { width: 180px; height: auto; filter: brightness(0) invert(1); }
 .dash-header nav { display: flex; gap: 1.25rem; font-size: .8rem; font-weight: 700; }
 .dash-header a { color: white; text-decoration: none; }
 .dash-header a:hover { color: var(--dash-lime); }

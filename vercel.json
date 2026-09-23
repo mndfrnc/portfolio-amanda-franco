@@ -6,7 +6,12 @@
   "redirects": [
     {
       "source": "/FBO",
-      "destination": "/FBO/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/FBO/:path*",
+      "destination": "/",
       "permanent": true
     }
   ]

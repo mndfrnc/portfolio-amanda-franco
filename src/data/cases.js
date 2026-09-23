@@ -42,7 +42,7 @@ export const cases = [
     titulo: "Pipeline Health",
     tag: "CRM · análise de dados · automação · revenue operations",
     badge: "Case completo e explorável",
-    href: "/pipeline-health",
+    href: "/crm",
     sintese: [
       "Análise de 8.800 oportunidades para entender a saúde do pipeline e localizar " +
         "o que impedia uma fila de follow-up confiável.",

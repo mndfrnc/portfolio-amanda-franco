@@ -5,7 +5,12 @@ import { navItems } from "../data/copy.js";
 <header class="header">
   <div class="header__inner">
     <a href="#inicio" class="header__wordmark" aria-label="Amanda Franco — início">
-      <img src="/identidade/wordmark-amanda.svg" alt="amanda" width="150" height="36" />
+      <img
+        src="/identidade/wordmark-amanda-asterisco-magenta.png"
+        alt="Amanda"
+        width="900"
+        height="300"
+      />
     </a>
 
     <nav class="header__nav" aria-label="Navegação principal">
@@ -29,7 +34,7 @@ import { navItems } from "../data/copy.js";
     max-width: var(--largura-max);
     margin-inline: auto;
     padding-inline: var(--margem);
-    height: 64px;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -45,8 +50,9 @@ import { navItems } from "../data/copy.js";
   }
 
   .header__wordmark img {
-    height: 22px;
-    width: auto;
+    width: 180px;
+    height: auto;
+    object-fit: contain;
   }
 
   .header__nav {
@@ -56,7 +62,7 @@ import { navItems } from "../data/copy.js";
     flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    max-width: calc(100% - 120px);
+    max-width: calc(100% - 196px);
     scrollbar-width: none;
   }
 
@@ -83,8 +89,13 @@ import { navItems } from "../data/copy.js";
   }
 
   @media (min-width: 640px) {
+    .header__wordmark img {
+      width: 200px;
+    }
+
     .header__nav {
       gap: 0.875rem;
+      max-width: calc(100% - 224px);
     }
   }
 

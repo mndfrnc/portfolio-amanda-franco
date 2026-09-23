@@ -13,7 +13,7 @@ body { background: #f4f2ed; color: var(--case-ink); }
 .skip-link { position: fixed; top: 0; left: 1rem; z-index: 100; transform: translateY(-120%); background: var(--case-ink); color: white; padding: .75rem 1rem; }
 .skip-link:focus { transform: translateY(0); }
 .case-header { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 72px; padding: .8rem var(--margem); border-bottom: 1px solid rgba(12,22,36,.12); background: rgba(244,242,237,.94); backdrop-filter: blur(14px); }
-.case-header .brand img { width: 132px; height: auto; }
+.case-header .brand img { width: 180px; height: auto; }
 .case-header nav { display: flex; align-items: center; gap: clamp(.75rem, 2vw, 1.5rem); font-size: .82rem; font-weight: 650; }
 .case-header nav a { text-decoration: none; }
 .case-header nav a:hover { color: var(--magenta); }
