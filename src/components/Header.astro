@@ -5,7 +5,12 @@ import { navItems } from "../data/copy.js";
 <header class="header">
   <div class="header__inner">
     <a href="#inicio" class="header__wordmark" aria-label="Amanda Franco — início">
-      <img src="/identidade/wordmark-amanda.svg" alt="amanda" width="150" height="36" />
+      <img
+        src="/identidade/wordmark-amanda-asterisco-magenta.png"
+        alt="Amanda"
+        width="900"
+        height="300"
+      />
     </a>
 
     <nav class="header__nav" aria-label="Navegação principal">
@@ -45,8 +50,10 @@ import { navItems } from "../data/copy.js";
   }
 
   .header__wordmark img {
-    height: 22px;
+    height: 26px;
     width: auto;
+    max-width: 150px;
+    object-fit: contain;
   }
 
   .header__nav {
