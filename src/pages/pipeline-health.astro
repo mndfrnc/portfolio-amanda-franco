@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/pipeline-health.css";
+---
+
+<Layout
+  title="Pipeline Health — CRM & Revenue Operations | Amanda Franco"
+  description="Case de CRM e análise de dados: 8.800 oportunidades transformadas em diagnóstico, fila de ação e dashboard para decisões comerciais."
+>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="case-header">
+    <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
+      <img src="/identidade/wordmark-amanda.svg" alt="Amanda Franco" width="149" height="31" />
+    </a>
+    <nav aria-label="Navegação do case">
+      <a href="#descobertas">Descobertas</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#solucao">Solução</a>
+      <a href="/">Portfólio</a>
+    </nav>
+  </header>
+
+  <main id="conteudo" data-dashboard-endpoint="/pipeline-health/data/dashboard.json">
+    <section class="hero section-shell">
+      <div class="hero__copy">
+        <p class="eyebrow">Case de CRM &amp; Revenue Operations</p>
+        <h1>Pipeline Health</h1>
+        <p class="hero__lead">Como 8.800 oportunidades viraram um diagnóstico claro, uma fila de ação e decisões de CRM mais objetivas.</p>
+        <div class="hero__meta" aria-label="Resumo do projeto">
+          <span>SQL + Python</span>
+          <span>Dashboard interativo</span>
+          <span>Dados fornecidos para o case</span>
+        </div>
+      </div>
+      <aside class="hero__signal" aria-label="Principal sinal encontrado">
+        <span class="hero__signal-label">Sinal principal</span>
+        <strong>90,4%</strong>
+        <p>das oportunidades em Engaging já tinham ultrapassado o percentil 90 do ciclo histórico de vendas.</p>
+      </aside>
+    </section>
+
+    <section class="problem section-shell" id="problema">
+      <div class="section-heading">
+        <p class="eyebrow">O problema</p>
+        <h2>O pipeline tinha volume, mas não oferecia uma prioridade clara de acompanhamento.</h2>
+      </div>
+      <div class="problem__grid">
+        <p>Antes de pensar em automação, a base foi relacionada e analisada para responder uma pergunta simples: <strong>onde a operação deveria agir primeiro?</strong></p>
+        <p>O histórico indicava um ciclo fechado mediano de 45 dias e percentil 90 de 104 dias. Mesmo assim, a maior parte das oportunidades abertas em Engaging já estava além dessa referência.</p>
+      </div>
+    </section>
+
+    <section class="findings section-shell" id="descobertas">
+      <div class="section-heading">
+        <p class="eyebrow">O que os dados revelaram</p>
+        <h2>Três evidências mudaram o foco do trabalho.</h2>
+      </div>
+      <div class="finding-grid" id="finding-grid" aria-live="polite"></div>
+      <div class="decision-note">
+        <strong>Decisão:</strong> priorizar recuperação e qualificação do pipeline aberto. Diferenças entre produtos, regiões e portes de conta foram exploradas, mas não apresentaram evidência suficiente para justificar uma solução mais complexa.
+      </div>
+    </section>
+
+    <section class="method section-shell" aria-labelledby="metodo-title">
+      <div class="section-heading">
+        <p class="eyebrow">DADOS → DESCOBERTAS → DECISÃO</p>
+        <h2 id="metodo-title">Uma análise reproduzível, sem esconder o raciocínio.</h2>
+      </div>
+      <ol class="method__steps">
+        <li><span>01</span><strong>Relacionar</strong><p>Contas, produtos, oportunidades e equipes a partir do dicionário fornecido.</p></li>
+        <li><span>02</span><strong>Tratar</strong><p>Normalizar nomes de produto e categorias antes de calcular qualquer indicador.</p></li>
+        <li><span>03</span><strong>Comparar</strong><p>Usar o ciclo histórico fechado como referência para avaliar o pipeline aberto.</p></li>
+        <li><span>04</span><strong>Priorizar</strong><p>Transformar idade e completude dos dados em uma fila de revisão explicável.</p></li>
+      </ol>
+    </section>
+
+    <section class="dashboard section-shell" id="dashboard">
+      <div class="dashboard__intro">
+        <div class="section-heading">
+          <p class="eyebrow">Dashboard explorável</p>
+          <h2>Saúde do pipeline e fila de ação</h2>
+          <p>Os indicadores principais mostram a operação completa. Os filtros atuam sobre o backlog em Engaging e ajudam a encontrar onde agir primeiro.</p>
+        </div>
+        <p class="data-stamp"><span></span> Execução local · posição em 31/12/2017</p>
+      </div>
+
+      <div class="dashboard__filters" aria-label="Filtros do backlog">
+        <label>Região<select id="filter-region"><option value="">Todas</option></select></label>
+        <label>Gestor<select id="filter-manager"><option value="">Todos</option></select></label>
+        <label>Responsável<select id="filter-agent"><option value="">Todos</option></select></label>
+        <label>Produto<select id="filter-product"><option value="">Todos</option></select></label>
+        <label>Prioridade<select id="filter-priority"><option value="">Todas</option></select></label>
+        <button type="button" id="clear-filters">Limpar filtros</button>
+      </div>
+
+      <div class="kpi-grid" aria-live="polite">
+        <article><span>Oportunidades analisadas</span><strong id="kpi-source">—</strong><small>base completa</small></article>
+        <article><span>Receita ganha</span><strong id="kpi-revenue">—</strong><small>negócios Won</small></article>
+        <article><span>Win rate</span><strong id="kpi-win-rate">—</strong><small>Won ÷ fechados</small></article>
+        <article><span>Ciclo mediano</span><strong id="kpi-cycle">—</strong><small>dias até fechamento</small></article>
+      </div>
+
+      <div class="dashboard__grid">
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Histórico</span><h3>Receita e win rate por mês</h3></div><p>O volume muda, mas não explica sozinho a oscilação de conversão.</p></div>
+          <div id="monthly-chart" class="monthly-chart" role="img" aria-label="Receita e win rate mensal"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel__heading"><div><span>Backlog filtrado</span><h3>Idade em Engaging</h3></div></div>
+          <div id="age-chart" class="bar-list"></div>
+        </article>
+
+        <article class="panel">
+          <div class="panel__heading"><div><span>Backlog filtrado</span><h3>Resumo para ação</h3></div></div>
+          <dl class="action-summary">
+            <div><dt>Oportunidades</dt><dd id="action-count">—</dd></div>
+            <div><dt>90+ dias</dt><dd id="action-aged">—</dd></div>
+            <div><dt>Conta ausente</dt><dd id="action-missing">—</dd></div>
+            <div><dt>Valor de referência*</dt><dd id="action-value">—</dd></div>
+          </dl>
+          <p class="panel__note">* Soma do preço de lista do produto. Não é forecast nem receita prevista.</p>
+        </article>
+
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Portfólio</span><h3>Desempenho por produto</h3></div><p>Receita, conversão e volume ajudam a separar escala de eficiência.</p></div>
+          <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Fechados</th><th>Win rate</th><th>Receita</th><th>Preço realizado</th></tr></thead><tbody id="product-table"></tbody></table></div>
+        </article>
+
+        <article class="panel panel--wide">
+          <div class="panel__heading"><div><span>Fila operacional</span><h3>Oportunidades para revisão</h3></div><p id="queue-status" role="status">Carregando dados…</p></div>
+          <div class="table-wrap"><table><thead><tr><th>Prioridade</th><th>Oportunidade</th><th>Responsável</th><th>Região</th><th>Produto</th><th>Conta</th><th>Idade</th><th>Motivo</th></tr></thead><tbody id="queue-table"></tbody></table></div>
+          <button type="button" class="load-more" id="load-more">Mostrar mais</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="solution section-shell" id="solucao">
+      <div class="section-heading">
+        <p class="eyebrow">Como CRM e automação entram</p>
+        <h2>Menos arquitetura. Duas rotinas que respondem ao problema.</h2>
+      </div>
+      <div class="solution__grid">
+        <article><span>Views de CRM</span><h3>Separar por urgência e completude</h3><ul><li>Engaging com 180+ dias</li><li>Engaging entre 90 e 179 dias</li><li>Conta não associada</li><li>Fila por responsável e região</li></ul></article>
+        <article><span>Automação 01</span><h3>Revisão por envelhecimento</h3><p>Ao completar 90 dias em Engaging, criar uma tarefa para o responsável revisar avanço, perda ou necessidade de follow-up.</p></article>
+        <article><span>Automação 02</span><h3>Qualificação antes da mensagem</h3><p>Quando a conta estiver ausente, direcionar o registro para enriquecimento antes de qualquer contato personalizado.</p></article>
+      </div>
+      <p class="scope-note">Solução desenhada para configuração em um CRM moderno. Nenhuma automação ou contato externo foi executado.</p>
+    </section>
+
+    <section class="technical section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">SQL + Python</p>
+        <h2>Ferramentas aplicadas à pergunta de negócio.</h2>
+      </div>
+      <div class="technical__grid">
+        <article><strong>SQL</strong><p>Agregou desempenho mensal, produto, equipe, setor e faixas de idade. As queries estão versionadas e geram as tabelas usadas no dashboard.</p></article>
+        <article><strong>Python</strong><p>Leu e relacionou os CSVs, normalizou chaves, calculou idade e prioridade, reconciliou as saídas e publicou o JSON do dashboard.</p></article>
+        <article><strong>Controle simples</strong><p>8.800 IDs únicos, todas as contas preenchidas reconciliadas, todos os agentes encontrados e produtos normalizados antes da análise.</p></article>
+      </div>
+    </section>
+
+    <section class="limitations section-shell">
+      <div class="section-heading">
+        <p class="eyebrow">Limitações</p>
+        <h2>O que os dados não permitem afirmar.</h2>
+      </div>
+      <ul>
+        <li>Não há histórico de atividades ou mudanças de estágio; idade não prova ausência de contato.</li>
+        <li>Não há origem, campanha ou canal; o case não atribui performance a Marketing.</li>
+        <li>Preço de lista é usado apenas como referência para priorização, não como forecast.</li>
+        <li>Diferenças individuais não viram avaliação de pessoas sem contexto de carteira, meta ou senioridade.</li>
+      </ul>
+      <p class="source-note"><strong>Fonte e natureza:</strong> CRM Sales Opportunities, Maven Analytics — conjunto público, fictício e disponibilizado sob licença Public Domain. Todas as análises foram executadas localmente; nenhuma ação ocorreu em um CRM real.</p>
+    </section>
+  </main>
+
+  <footer class="case-footer"><p>Pipeline Health · Case de Amanda Franco</p><a href="/">Voltar ao portfólio</a></footer>
+  <script type="module" src="/pipeline-health/app.js"></script>
+</Layout>

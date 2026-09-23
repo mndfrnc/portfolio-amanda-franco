@@ -25,3 +25,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Outputs locais reproduzíveis da análise
+analysis/output/analysis.sqlite
+analysis/output/dashboard.json
+__pycache__/
+*.pyc

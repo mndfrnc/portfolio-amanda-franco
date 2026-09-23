@@ -39,16 +39,18 @@ export const cases = [
     ],
   },
   {
-    titulo: "CRM / Lifecycle",
-    tag: "CRM · jornadas · automação · dados",
-    badge: "Projeto autoral — conceitual / especulativo",
+    titulo: "Pipeline Health",
+    tag: "CRM · análise de dados · automação · revenue operations",
+    badge: "Case completo e explorável",
+    href: "/pipeline-health",
     sintese: [
-      "Projeto autoral e especulativo, a partir de um briefing fictício, para " +
-        "demonstrar abordagem e processo de decisão em CRM e Lifecycle.",
-      "Diagnóstico do cenário e segmentação da base como ponto de partida da estratégia.",
-      "Desenho de jornadas, definição de eventos, canais, frequência e estrutura de " +
-        "mensuração e governança.",
-      "Em desenvolvimento — projeto conceitual, case completo em breve.",
+      "Análise de 8.800 oportunidades para entender a saúde do pipeline e localizar " +
+        "o que impedia uma fila de follow-up confiável.",
+      "Preparação dos dados, exploração com SQL e Python e tradução dos achados em " +
+        "prioridades operacionais de CRM.",
+      "Dashboard explorável, views de acompanhamento e duas automações simples para " +
+        "revisão de oportunidades envelhecidas e enriquecimento de contas.",
+      "Concluído — ver análise e dashboard.",
     ],
   },
 ];

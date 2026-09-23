@@ -1,0 +1,11 @@
+sector,closed_deals,won_deals,win_rate,revenue
+retail,1267,799,0.6306,1867528.0
+technology,1058,671,0.6342,1515487.0
+medical,950,592,0.6232,1359595.0
+software,704,450,0.6392,1077934.0
+finance,613,375,0.6117,950908.0
+marketing,623,404,0.6485,922321.0
+entertainment,402,260,0.6468,689007.0
+telecommunications,456,285,0.625,653574.0
+services,352,223,0.6335,533006.0
+employment,286,179,0.6259,436174.0
