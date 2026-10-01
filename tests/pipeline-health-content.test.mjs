@@ -20,7 +20,7 @@ test("case page explains the problem, analysis, solution and provenance", async 
 
 test("homepage links to the new case", async () => {
   const cases = await readFile(new URL("../src/data/cases.js", import.meta.url), "utf8");
-  assert.match(cases, /href:\s*["']\/pipeline-health["']/);
+  assert.match(cases, /href:\s*["']\/crm["']/);
 });
 
 test("dashboard payload is reconciled with the analysis", async () => {
@@ -46,7 +46,7 @@ test("standalone dashboard preserves the validated data experience", async () =>
     "queue-table",
   ]) assert.match(page, new RegExp(marker.replace(/[+]/g, "\\+")));
 
-  assert.match(casePage, /href=["']\/pipeline-health\/dashboard["']/);
+  assert.match(casePage, /href=["']\/crm\/dashboard["']/);
   assert.match(casePage, /12\/08\/2026/);
   assert.match(styles, /--dash-ink:\s*#101b3f/i);
   assert.match(styles, /--dash-lime:\s*#dfff5f/i);

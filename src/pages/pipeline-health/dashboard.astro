@@ -3,16 +3,12 @@ import Layout from "../../layouts/Layout.astro";
 import "../../styles/pipeline-health.css";
 import "../../styles/pipeline-dashboard.css";
 ---
-
-<Layout
-  title="Pipeline Health Dashboard | Amanda Franco"
-  description="Dashboard explorável de saúde do pipeline, desempenho comercial e fila de oportunidades para revisão."
->
-  <a class="skip-link" href="#dashboard-main">Pular para o dashboard</a>
+<Layout title="Pipeline Health Dashboard | Amanda Franco" description="Dashboard explorável de saúde do pipeline, desempenho comercial e fila de oportunidades para revisão.">
+<a class="skip-link" href="#dashboard-main">Pular para o dashboard</a>
 
   <header class="dash-header">
     <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
-      <img src="/identidade/wordmark-amanda.svg" alt="Amanda Franco" width="149" height="31" />
+      <img src="/identidade/wordmark-amanda-pipeline.svg" alt="Amanda Franco" width="149" height="31">
     </a>
     <nav aria-label="Navegação do dashboard">
       <a href="/crm">Ver case completo</a>
@@ -23,7 +19,7 @@ import "../../styles/pipeline-dashboard.css";
   <main id="dashboard-main" class="standalone-dashboard" data-dashboard-endpoint="/pipeline-health/data/dashboard.json">
     <section class="dash-hero">
       <div>
-        <p class="dash-kicker">CRM &amp; Revenue Operations</p>
+        <p class="dash-kicker">CRM / ANÁLISE E PRIORIZAÇÃO</p>
         <h1>Pipeline Health</h1>
         <p>Desempenho comercial, envelhecimento do backlog e uma fila de revisão baseada em dados.</p>
       </div>
@@ -34,22 +30,22 @@ import "../../styles/pipeline-dashboard.css";
       <div class="dashboard__intro">
         <div class="section-heading">
           <p class="eyebrow">Dashboard explorável</p>
-          <h2 id="dashboard-title">Saúde do pipeline e fila de ação</h2>
+          <h2 id="dashboard-title">Da visão geral ao próximo movimento.</h2>
           <p>Os indicadores principais mostram a operação completa. Os filtros atuam sobre o backlog em Engaging e ajudam a encontrar onde agir primeiro.</p>
         </div>
-        <p class="data-stamp"><span></span> Dados públicos e fictícios · execução local</p>
+        <p class="data-stamp"><span></span> Base pública fictícia · CRM Sales Opportunities</p>
       </div>
 
-      <div class="dashboard__filters" aria-label="Filtros do backlog">
+<section class="mobile-results" aria-label="Comparação do backlog"><div class="mobile-results-heading"><div><span>BACKLOG EM ENGAGING</span><p id="mobile-selection">Todos os recortes</p></div><button id="open-mobile-filters" type="button" aria-haspopup="dialog">Filtrar</button></div><div id="mobile-metrics" aria-live="polite"></div><div class="mobile-results-bottom"><span id="comparison-label">Sem comparação anterior</span><button id="mobile-reset" type="button">Limpar</button></div></section><section class="filter-zone" aria-labelledby="filter-title"><div class="filter-heading"><div><p class="filter-kicker">ESCOLHA ONDE OLHAR</p><h3 id="filter-title">Encontre o próximo recorte.</h3><p>Combine os filtros para explorar a idade, o resumo e a fila do backlog em Engaging.</p></div><div class="filter-count"><strong id="filter-count">—</strong><span>de 1.589 oportunidades</span></div></div>      <div class="dashboard__filters" aria-label="Filtros do backlog">
         <label>Região<select id="filter-region"><option value="">Todas</option></select></label>
         <label>Gestor<select id="filter-manager"><option value="">Todos</option></select></label>
         <label>Responsável<select id="filter-agent"><option value="">Todos</option></select></label>
         <label>Produto<select id="filter-product"><option value="">Todos</option></select></label>
         <label>Prioridade<select id="filter-priority"><option value="">Todas</option></select></label>
-        <button type="button" id="clear-filters">Limpar filtros</button>
+        <button type="button" id="clear-filters">Limpar seleção</button>
       </div>
 
-      <div class="kpi-grid" aria-live="polite">
+<div class="filter-footer"><div id="active-filters" aria-label="Seleções ativas"></div><p id="filter-scope" role="status" aria-live="polite">Carregando recorte…</p></div></section>      <div class="overview-label"><span>VISÃO GERAL DA BASE</span><p>Indicadores globais · permanecem iguais ao filtrar o backlog</p></div><div class="kpi-grid" aria-live="polite">
         <article><span>Oportunidades analisadas</span><strong id="kpi-source">—</strong><small>base completa</small></article>
         <article><span>Receita ganha</span><strong id="kpi-revenue">—</strong><small>negócios Won</small></article>
         <article><span>Win rate</span><strong id="kpi-win-rate">—</strong><small>Won ÷ fechados</small></article>
@@ -58,7 +54,7 @@ import "../../styles/pipeline-dashboard.css";
 
       <div class="dashboard__grid">
         <article class="panel panel--wide">
-          <div class="panel__heading"><div><span>Histórico</span><h3>Receita e win rate por mês</h3></div><p>Volume e conversão vistos em conjunto.</p></div>
+          <div class="panel__heading"><div><span>Base global / Histórico</span><h3>Receita e win rate por mês</h3></div><p>Base global · barras: receita relativa ao maior mês; linha: win rate.</p></div>
           <div id="monthly-chart" class="monthly-chart" role="img" aria-label="Receita e win rate mensal"></div>
         </article>
         <article class="panel">
@@ -76,7 +72,7 @@ import "../../styles/pipeline-dashboard.css";
           <p class="panel__note">* Soma do preço de lista. Não representa forecast.</p>
         </article>
         <article class="panel panel--wide">
-          <div class="panel__heading"><div><span>Portfólio</span><h3>Desempenho por produto</h3></div><p>Receita, conversão e volume separam escala de eficiência.</p></div>
+          <div class="panel__heading"><div><span>Base global / Portfólio</span><h3>Desempenho por produto</h3></div><p>Base global · estes resultados não mudam com os filtros do backlog.</p></div>
           <div class="table-wrap"><table><thead><tr><th>Produto</th><th>Fechados</th><th>Win rate</th><th>Receita</th><th>Preço realizado</th></tr></thead><tbody id="product-table"></tbody></table></div>
         </article>
         <article class="panel panel--wide">
@@ -90,5 +86,7 @@ import "../../styles/pipeline-dashboard.css";
     <p class="dash-source">Fonte: CRM Sales Opportunities, Maven Analytics — conjunto público, fictício e em domínio público. Nenhuma ação foi executada em CRM real.</p>
   </main>
 
-  <script type="module" src="/pipeline-health/app.js"></script>
+
+<dialog id="mobile-filter-dialog" aria-labelledby="mobile-dialog-title"><form method="dialog"><div class="dialog-heading"><div><p>RECORTE DO BACKLOG</p><h2 id="mobile-dialog-title">Escolha os filtros</h2></div><button aria-label="Fechar filtros" value="cancel">×</button></div><p class="dialog-note">A seleção só altera os resultados ao aplicar.</p><div id="mobile-draft-filters"></div><div class="dialog-actions"><button type="button" id="mobile-draft-clear">Limpar seleção</button><button type="button" id="mobile-apply">Aplicar filtros</button></div></form></dialog>
+<script type="module" src="/pipeline-health/dashboard-app.js"></script>
 </Layout>
