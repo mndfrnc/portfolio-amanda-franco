@@ -193,6 +193,7 @@
   right: 15px;
   bottom: 28px;
   width: clamp(175px, 22vw, 275px);
+  color: var(--editorial-accent);
   transform: rotate(-1.2deg);
 }
 
@@ -434,7 +435,7 @@
 .portfolio-redesign #sobre .sobre__photo {
   flex: 0 0 clamp(300px, 38vw, 480px);
   width: clamp(300px, 38vw, 480px);
-  aspect-ratio: 4 / 4.7;
+  aspect-ratio: 3 / 4;
   overflow: visible;
   border: 9px solid var(--editorial-paper);
   background: var(--editorial-paper);
@@ -725,7 +726,7 @@
     align-self: center;
     flex: none;
     width: min(78vw, 360px);
-    aspect-ratio: 4 / 4.4;
+    aspect-ratio: 3 / 4;
     border-width: 7px;
     box-shadow: -9px 9px 0 var(--editorial-ink);
   }
