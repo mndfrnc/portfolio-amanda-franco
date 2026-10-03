@@ -166,23 +166,15 @@
   flex: 0 0 clamp(320px, 36vw, 500px);
   width: clamp(320px, 36vw, 500px);
   aspect-ratio: 4 / 4.6;
-  overflow: visible;
-  border: 10px solid var(--editorial-paper);
-  background: var(--editorial-paper);
-  box-shadow: 16px 16px 0 var(--editorial-accent);
-  transform: rotate(1.2deg);
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
 }
 
 .portfolio-redesign #inicio .hero__photo::before {
-  position: absolute;
-  z-index: 2;
-  top: -24px;
-  left: 28px;
-  width: 70px;
-  height: 19px;
-  background: var(--editorial-accent);
-  content: "";
-  transform: rotate(-5deg);
+  content: none;
 }
 
 .portfolio-redesign #inicio .hero__photo-img {
@@ -436,11 +428,11 @@
   flex: 0 0 clamp(300px, 38vw, 480px);
   width: clamp(300px, 38vw, 480px);
   aspect-ratio: 3 / 4;
-  overflow: visible;
-  border: 9px solid var(--editorial-paper);
-  background: var(--editorial-paper);
-  box-shadow: -14px 14px 0 var(--editorial-ink);
-  transform: rotate(-1deg);
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
 }
 
 .portfolio-redesign #sobre .sobre__photo-img {
@@ -637,8 +629,8 @@
     flex: none;
     width: min(78vw, 360px);
     aspect-ratio: 4 / 4.3;
-    border-width: 7px;
-    box-shadow: 10px 10px 0 var(--editorial-accent);
+    border: 0;
+    box-shadow: none;
   }
 
   .portfolio-redesign #inicio .hero__assinatura {
@@ -727,8 +719,8 @@
     flex: none;
     width: min(78vw, 360px);
     aspect-ratio: 3 / 4;
-    border-width: 7px;
-    box-shadow: -9px 9px 0 var(--editorial-ink);
+    border: 0;
+    box-shadow: none;
   }
 
   .portfolio-redesign #sobre .sobre__texto::before {
