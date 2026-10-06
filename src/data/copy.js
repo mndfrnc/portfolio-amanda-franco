@@ -83,8 +83,8 @@ export const copy = {
   contatoH2:
     "Se você procura alguém capaz de conectar estratégia, experiência e tecnologia com " +
     "clareza, vamos conversar.",
-  whatsapp: "+55 81 98591-4244",
-  whatsappHref: "https://wa.me/5581985914244",
+  whatsapp: "+55 81 99947-4646",
+  whatsappHref: "https://wa.me/5581999474646",
   email: "francocsamanda@gmail.com",
   linkedin: "linkedin.com/in/amandafrancoo",
   linkedinHref: "https://www.linkedin.com/in/amandafrancoo",
