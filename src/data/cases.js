@@ -11,9 +11,10 @@ export const camposSintese = ["Contexto", "Papel de Amanda", "Decisões / soluç
 
 export const cases = [
   {
-    titulo: "English Toolkit",
+    titulo: "English Tool",
     tag: "Produto digital · experiência de aprendizagem · tecnologia",
-    badge: null,
+    badge: "Case completo e explorável",
+    href: "/cases/english-tool",
     sintese: [
       "Projeto autoral para transformar conteúdos de inglês em uma experiência de " +
         "aprendizagem mais clara, organizada e possível de manter no dia a dia.",
@@ -21,13 +22,14 @@ export const cases = [
         "sincronização entre dispositivos.",
       "Estrutura de microaulas e organização do progresso como espinha dorsal da " +
         "experiência de uso.",
-      "Concluído.",
+      "Concluído — ver case completo.",
     ],
   },
   {
     titulo: "Leo no WhatsApp",
     tag: "Inteligência artificial · automação · experiência conversacional",
     badge: "Tratamento cuidadoso de dados e privacidade",
+    href: "/cases/leo-no-whatsapp",
     sintese: [
       "Assistente pessoal desenvolvido no WhatsApp para explorar como IA, memória, " +
         "automação e contexto formam uma experiência mais contínua e humana.",
@@ -35,7 +37,7 @@ export const cases = [
         "decisões de experiência conversacional.",
       "Cuidados específicos para preservar privacidade e limites pessoais no uso da " +
         "automação.",
-      "Em documentação — case completo em breve.",
+      "Estrutura principal funcional — ver case completo.",
     ],
   },
   {

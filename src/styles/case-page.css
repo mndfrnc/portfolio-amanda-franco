@@ -1,0 +1,277 @@
+/* Página de case individual — usa o mesmo sistema editorial do redesign da home. */
+.case-page {
+  --editorial-paper: #F4F0E8;
+  --editorial-white: #FAF8F2;
+  --editorial-ink: #101010;
+  --editorial-muted: #5B574F;
+  --editorial-line: #D5CEC2;
+  --editorial-accent: #E83E8C;
+  --editorial-action: #B6F000;
+  --font-serif: Georgia, "Times New Roman", serif;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  background: var(--editorial-paper);
+  color: var(--editorial-ink);
+}
+
+.case-page a {
+  color: inherit;
+}
+
+.case-page .skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: 200;
+  padding: 0.5rem 1rem;
+  background: var(--editorial-ink);
+  color: var(--editorial-paper);
+}
+
+.case-page .skip-link:focus {
+  top: 0;
+}
+
+.case-page .case-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  background: var(--editorial-paper);
+  border-bottom: 1px solid var(--editorial-ink);
+  padding: 1rem clamp(1.25rem, 5vw, 5.5rem);
+}
+
+.case-page .case-header .brand img {
+  width: clamp(130px, 14vw, 170px);
+  height: auto;
+}
+
+.case-page .case-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(0.75rem, 2vw, 1.75rem);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-page .case-header nav a {
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.case-page .case-header nav a:hover {
+  border-color: var(--editorial-accent);
+}
+
+.case-page .case-shell {
+  max-width: 920px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2rem);
+}
+
+.case-page section {
+  padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  border-bottom: 1px solid var(--editorial-line);
+}
+
+.case-page section:last-of-type {
+  border-bottom: none;
+}
+
+.case-page .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--editorial-muted);
+  margin-bottom: 0.875rem;
+}
+
+.case-page .eyebrow::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: var(--editorial-accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.case-page .case-hero h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 1.3rem + 2.8vw, 3.25rem);
+  line-height: 1.12;
+  max-width: 16ch;
+  margin-bottom: 1.25rem;
+}
+
+.case-page .case-hero__lead {
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.3125rem);
+  color: var(--editorial-muted);
+  max-width: 48rem;
+  line-height: 1.55;
+}
+
+.case-page .case-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.75rem;
+}
+
+.case-page .case-meta span {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--editorial-ink);
+  border-radius: 99px;
+  padding: 0.35rem 0.875rem;
+}
+
+.case-page h2 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 1.2rem + 1vw, 2rem);
+  line-height: 1.25;
+  max-width: 34rem;
+  margin-bottom: 1.5rem;
+}
+
+.case-page .case-prose p {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--editorial-ink);
+  max-width: 42rem;
+}
+
+.case-page .case-prose p + p {
+  margin-top: 1.1rem;
+}
+
+.case-page .case-prose strong {
+  font-weight: 700;
+}
+
+.case-page .case-grid {
+  display: grid;
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 720px) {
+  .case-page .case-grid--2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.case-page .case-card {
+  border: 1.5px solid var(--editorial-line);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.case-page .case-card span {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--editorial-muted);
+  margin-bottom: 0.625rem;
+}
+
+.case-page .case-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1875rem;
+  font-weight: 700;
+  margin-bottom: 0.625rem;
+}
+
+.case-page .case-card p {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--editorial-muted);
+}
+
+.case-page .case-list {
+  margin-top: 1.25rem;
+  padding-left: 1.25rem;
+}
+
+.case-page .case-list li {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  margin-bottom: 0.625rem;
+}
+
+.case-page .case-list li::marker {
+  color: var(--editorial-accent);
+}
+
+.case-page .status-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.9375rem;
+}
+
+.case-page .status-table th,
+.case-page .status-table td {
+  text-align: left;
+  padding: 0.75rem 0.875rem;
+  border-bottom: 1px solid var(--editorial-line);
+}
+
+.case-page .status-table th {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--editorial-muted);
+}
+
+.case-page .case-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--editorial-accent);
+}
+
+.case-page .case-cta:hover {
+  color: var(--editorial-accent);
+}
+
+.case-page .case-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem clamp(1.25rem, 5vw, 5.5rem);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--editorial-muted);
+  border-top: 1px solid var(--editorial-ink);
+}
+
+.case-page .case-footer a {
+  font-weight: 700;
+  color: var(--editorial-ink);
+}

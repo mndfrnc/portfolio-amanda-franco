@@ -1,0 +1,176 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/case-page.css";
+---
+
+<Layout
+  title="English Tool — Produto digital de inglês | Amanda Franco"
+  description="Case de produto: concepção e desenvolvimento de um PWA de inglês para iniciantes absolutos, da estrutura pedagógica à automação pós-compra."
+>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="case-page">
+    <header class="case-header">
+      <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
+        <img src="/identidade/amanda-wordmark-atual.svg" alt="amanda*" width="432" height="93" />
+      </a>
+      <nav aria-label="Navegação do case">
+        <a href="#contexto">Contexto</a>
+        <a href="#processo">Processo</a>
+        <a href="#entrega">Entrega</a>
+        <a href="/">Portfólio</a>
+      </nav>
+    </header>
+
+    <main id="conteudo" class="case-shell">
+      <section class="case-hero">
+        <p class="eyebrow">Produto digital · experiência de aprendizagem</p>
+        <h1>English Tool</h1>
+        <p class="case-hero__lead">
+          Um PWA de inglês para iniciantes absolutos: concepção, estrutura pedagógica e
+          desenvolvimento ponta a ponta de um produto autoral vendido por pagamento único.
+        </p>
+        <div class="case-meta">
+          <span>Produto autoral</span>
+          <span>PWA + Supabase</span>
+          <span>Em operação</span>
+        </div>
+      </section>
+
+      <section id="contexto">
+        <p class="eyebrow">Contexto</p>
+        <h2>Cursos genéricos entregam vocabulário solto, não progressão.</h2>
+        <div class="case-prose">
+          <p>
+            Identifiquei uma lacuna recorrente em quem está começando a aprender inglês do zero:
+            cursos genéricos entregam conteúdo solto, sem uma estrutura que leve de "não sei nada"
+            a "consigo montar uma frase e usá-la". A partir disso, decidi construir um produto
+            autoral: um PWA (aplicativo web progressivo) de inglês para iniciantes absolutos,
+            pensado para quem precisa de progressão clara, não de mais conteúdo disperso.
+          </p>
+          <p>
+            O produto é vendido como pagamento único através da plataforma Cakto, sem a fricção
+            de distribuição em App Store ou Google Play.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Percepção</p>
+        <h2>Estrutura importa mais que volume. Liberação de conteúdo é decisão de produto.</h2>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Percepção 1</span>
+            <h3>Progressão explícita</h3>
+            <p>
+              Em vez de lições soltas, o conteúdo foi organizado em progressão: Etapa 0
+              (fundamentos de som e estrutura) seguida de 5 módulos, cada um com lições, prática
+              variada e um checkpoint de consolidação.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Percepção 2</span>
+            <h3>Liberação com lógica de produto</h3>
+            <p>
+              Para equilibrar acesso imediato com ritmo de estudo sustentável, os Módulos 4 e 5
+              liberam automaticamente 7 dias após a criação da conta, não no primeiro login,
+              respeitando o ciclo de vida do usuário.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="processo">
+        <p class="eyebrow">Meu papel e processo</p>
+        <h2>Da arquitetura à conformidade, com decisão final em cada etapa.</h2>
+        <div class="case-prose">
+          <p>
+            Conduzi o desenvolvimento ponta a ponta (arquitetura, banco de dados, automações e
+            integrações), orquestrando ferramentas de IA para a implementação, com decisão final
+            e validação em produto, dados e conformidade.
+          </p>
+        </div>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Arquitetura</span>
+            <h3>PWA com Supabase</h3>
+            <p>Autenticação, progresso do aluno e sincronização entre dispositivos, sem app store.</p>
+          </article>
+          <article class="case-card">
+            <span>Gate de conteúdo</span>
+            <h3>Trigger no banco, não no login</h3>
+            <p>
+              Tabela dedicada com trigger disparado na criação da conta, garantindo que a
+              contagem comece no momento certo e não possa ser manipulada pelo cliente, com RLS
+              restringindo cada usuário à própria linha.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Automação pós-compra</span>
+            <h3>Webhook Cakto → Supabase Edge Function</h3>
+            <p>
+              Dispara o e-mail de boas-vindas (acesso, comunidade no Telegram e Instagram) assim
+              que o pagamento é aprovado.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>QA orientado a evidência</span>
+            <h3>Debug pelo log, não por tentativa</h3>
+            <p>
+              No primeiro teste do webhook, a function retornava erro de autenticação. A leitura
+              direta dos logs e do payload real revelou que a chave secreta de teste divergia da
+              configurada. A correção veio da evidência.
+            </p>
+          </article>
+        </div>
+        <div class="case-prose" style="margin-top: 1.75rem;">
+          <p>
+            <strong>Posicionamento de marca:</strong> por decisão explícita minha, o English Tool
+            é 100% orientado à marca do produto, sem nome ou imagem pessoal vinculados a nenhum
+            canal. Página de vendas, e-mails, Telegram e Instagram são próprios do produto,
+            dissociados do meu perfil pessoal.
+          </p>
+          <p>
+            <strong>Conformidade:</strong> Termos de Uso e Política de Privacidade redigidos
+            considerando LGPD e CDC, distinguindo os dados tratados pelo próprio produto
+            (e-mail, senha, progresso) dos dados tratados pelo processador de pagamento (CPF,
+            dados de cartão), que o produto não acessa nem armazena.
+          </p>
+          <p>
+            <strong>Marketing:</strong> planejamento da campanha de lançamento e criação do
+            material de divulgação (página de vendas, comunicação do lançamento), com automação
+            de e-mail transacional e estruturação de comunidade própria.
+          </p>
+        </div>
+      </section>
+
+      <section id="entrega">
+        <p class="eyebrow">Entrega</p>
+        <h2>O que está construído e em operação hoje.</h2>
+        <ul class="case-list">
+          <li>PWA completo: Etapa 0 + 5 módulos, lições com prática variada (múltipla escolha, montagem de frases, escuta, escrita) e checkpoints de revisão.</li>
+          <li>Apostila em PDF complementar ao conteúdo interativo.</li>
+          <li>Autenticação e progresso via Supabase, com gate de liberação por tempo decorrido desde a criação da conta.</li>
+          <li>Cadastro, recuperação de senha e sincronização de progresso testados em iPhone, Android e desktop.</li>
+          <li>Automação de e-mail de boas-vindas via Supabase Edge Function e Resend, acionada por webhook no evento de compra aprovada.</li>
+          <li>Página de vendas, página de obrigado, Termos de Uso e Política de Privacidade publicados no domínio próprio do produto.</li>
+          <li>Comunidade no Telegram e perfil no Instagram dedicados ao produto.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="eyebrow">Aprendizados e limites</p>
+        <h2>O que ainda não posso afirmar.</h2>
+        <ul class="case-list">
+          <li>O produto está em fase inicial de vendas; este case descreve a concepção, a arquitetura e o que foi construído, sem métricas de faturamento, tração ou volume de vendas ainda verificáveis.</li>
+          <li>Não há dados de retenção de alunos nem de conclusão dos módulos em escala. O produto foi testado funcionalmente, não validado estatisticamente com uma base grande de usuários.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="case-footer">
+      <p>English Tool · Case de Amanda Franco</p>
+      <a href="/">Voltar ao portfólio</a>
+    </footer>
+  </div>
+</Layout>

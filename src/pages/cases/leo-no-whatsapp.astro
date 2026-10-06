@@ -1,0 +1,183 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/case-page.css";
+---
+
+<Layout
+  title="Leo no WhatsApp — Agente pessoal de IA | Amanda Franco"
+  description="Case de arquitetura: um agente pessoal de IA no WhatsApp, com memória, contexto modular e um desenho pensado para ser replicado em contexto de negócio."
+>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="case-page">
+    <header class="case-header">
+      <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
+        <img src="/identidade/amanda-wordmark-atual.svg" alt="amanda*" width="432" height="93" />
+      </a>
+      <nav aria-label="Navegação do case">
+        <a href="#contexto">Contexto</a>
+        <a href="#processo">Processo</a>
+        <a href="#replicabilidade">Replicabilidade</a>
+        <a href="/">Portfólio</a>
+      </nav>
+    </header>
+
+    <main id="conteudo" class="case-shell">
+      <section class="case-hero">
+        <p class="eyebrow">Inteligência artificial · automação · experiência conversacional</p>
+        <h1>Leo no WhatsApp</h1>
+        <p class="case-hero__lead">
+          Arquitetura de um agente pessoal de IA operando no WhatsApp, pensada para reduzir a
+          fricção entre pensamento, contexto e ação, e desenhada para ser replicável em contexto
+          de negócio.
+        </p>
+        <div class="case-meta">
+          <span>Projeto pessoal</span>
+          <span>n8n + Evolution API + OpenAI</span>
+          <span>Estrutura principal funcional</span>
+        </div>
+      </section>
+
+      <section id="contexto">
+        <p class="eyebrow">Contexto</p>
+        <h2>Uma inquietação pessoal, não um briefing de cliente.</h2>
+        <div class="case-prose">
+          <p>
+            O Leo nasceu do limite de interações com IA que funcionavam como sessões isoladas:
+            eu precisava repetir contexto, reconstruir decisões e adaptar o tom toda vez. A
+            pergunta deixou de ser "como ter um chatbot no WhatsApp?" e passou a ser "como
+            construir uma presença conversacional que entenda contexto, acompanhe continuidade e
+            ajude de forma coerente ao longo do tempo?".
+          </p>
+          <p>
+            O agente foi pensado para circular entre tarefas diferentes sem perder o vínculo de
+            contexto: organizar pensamentos, acompanhar projetos, apoiar rotinas, testar
+            automações, servindo como interface natural para fluxos que, por trás da conversa,
+            passam por automação, banco de dados e serviços externos.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Percepção</p>
+        <h2>UX conversacional é continuidade, não resposta isolada.</h2>
+        <div class="case-prose">
+          <p>
+            Depois de cerca de um ano de prática com UX conversacional, ficou claro que uma boa
+            experiência não depende só da qualidade de uma resposta isolada: depende de
+            continuidade, coerência e capacidade de interpretar o que a pessoa está realmente
+            fazendo naquela conversa. Um chatbot tradicional trata cada mensagem como uma
+            solicitação; um agente pessoal precisa perceber quando a pessoa está pedindo solução,
+            quando está só compartilhando algo e quando precisa de continuidade.
+          </p>
+        </div>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Princípio</span>
+            <h3>Personalidade não é enfeite</h3>
+            <p>Funciona como camada de previsibilidade: tom, tamanho de resposta e limites reconhecíveis.</p>
+          </article>
+          <article class="case-card">
+            <span>Princípio</span>
+            <h3>Memória útil é seletiva</h3>
+            <p>Recuperar só o que muda a resposta atual, sem deixar histórico irrelevante contaminar a interação.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="processo">
+        <p class="eyebrow">Meu papel e processo</p>
+        <h2>Arquitetura modular de contexto, com debugging orientado a evidência.</h2>
+        <div class="case-prose">
+          <p>
+            A arquitetura evoluiu de um prompt único para uma proposta modular: pessoa + relação
+            + estado atual + módulo de conhecimento necessário + memória curta + exemplos =
+            prompt final.
+          </p>
+          <p>
+            <strong>Arquitetura em operação:</strong> WhatsApp (número próprio) → Evolution API →
+            automação (n8n) → banco de dados (PostgreSQL) → modelo de linguagem (OpenAI) →
+            resposta persistida e devolvida ao WhatsApp. A infraestrutura é self-hosted, com
+            controle próprio sobre integrações, banco e logs.
+          </p>
+        </div>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Debugging orientado a evidência</span>
+            <h3>Webhook sem execução</h3>
+            <p>
+              Um fluxo estava publicado, mas a integração ainda apontava para a URL antiga. O
+              diagnóstico veio da ausência total de execuções registradas; a correção foi
+              atualizar a URL de produção.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Debugging orientado a evidência</span>
+            <h3>Imagem quebrando o fluxo</h3>
+            <p>
+              Ao enviar uma imagem, o registro da mensagem falhava por uma restrição de conteúdo
+              no banco. O registro de falha mostrou o campo vazio; a regra foi ampliada para
+              aceitar outros formatos de conteúdo. Ficou exposto um limite: o fluxo passou a
+              aceitar a mensagem sem falhar, mas o modelo ainda não lê o conteúdo visual.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="entrega">
+        <p class="eyebrow">Entrega</p>
+        <h2>O que está em operação hoje.</h2>
+        <table class="status-table">
+          <thead>
+            <tr><th>Camada</th><th>Situação</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>WhatsApp com número próprio</td><td>Ativo</td></tr>
+            <tr><td>Orquestração ponta a ponta</td><td>Ativo</td></tr>
+            <tr><td>Memória de conversa (histórico curto)</td><td>Ativo</td></tr>
+            <tr><td>Geração de resposta (LLM)</td><td>Ativo</td></tr>
+            <tr><td>Personalidade base</td><td>Ativa, em refinamento</td></tr>
+            <tr><td>Módulos de conhecimento por contexto</td><td>Em validação</td></tr>
+            <tr><td>Estado persistente entre conversas</td><td>Planejado</td></tr>
+            <tr><td>Leitura real de imagens</td><td>Ainda não implementada</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="replicabilidade">
+        <p class="eyebrow">Replicabilidade em contexto de negócio</p>
+        <h2>O valor está na arquitetura, não na personalidade do Leo.</h2>
+        <div class="case-prose">
+          <p>
+            O mesmo desenho pode ser adaptado para atendimento, qualificação de leads, suporte
+            interno, Customer Success ou assistentes especializados por área: contexto modular,
+            memória controlada, estado persistente e orquestração integrada aos sistemas de
+            negócio.
+          </p>
+          <p>
+            O que muda em um agente corporativo: contexto distribuído entre clientes e contas
+            (não concentrado em uma pessoa), necessidade de governança e versionamento,
+            tratamento de dados pessoais e LGPD, escala e observabilidade, e tom de marca com
+            limites claros de representação.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Aprendizados e limites</p>
+        <h2>O que ainda está em validação.</h2>
+        <ul class="case-list">
+          <li>Memória hoje é histórico curto; o estado persistente estruturado ainda será implementado.</li>
+          <li>Subpersonas ainda podem deixar resíduos de estilo enquanto dependem só da memória curta.</li>
+          <li>Multimodalidade: imagens já não quebram o fluxo, mas o modelo ainda não recebe o conteúdo visual.</li>
+          <li>Não há ainda uma camada consolidada de métricas de uso, qualidade, latência ou custo.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="case-footer">
+      <p>Leo no WhatsApp · Case de Amanda Franco</p>
+      <a href="/">Voltar ao portfólio</a>
+    </footer>
+  </div>
+</Layout>
