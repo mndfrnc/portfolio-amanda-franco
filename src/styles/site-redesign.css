@@ -165,7 +165,7 @@
 .portfolio-redesign #inicio .hero__photo {
   flex: 0 0 clamp(320px, 36vw, 500px);
   width: clamp(320px, 36vw, 500px);
-  aspect-ratio: 4 / 4.6;
+  aspect-ratio: 1920 / 1828;
   overflow: hidden;
   border: 0;
   background: transparent;
@@ -425,9 +425,9 @@
 }
 
 .portfolio-redesign #sobre .sobre__photo {
-  flex: 0 0 clamp(300px, 38vw, 480px);
-  width: clamp(300px, 38vw, 480px);
-  aspect-ratio: 3 / 4;
+  flex: 0 0 clamp(280px, 30vw, 360px);
+  width: clamp(280px, 30vw, 360px);
+  aspect-ratio: 9 / 16;
   overflow: hidden;
   border: 0;
   background: transparent;
@@ -465,6 +465,7 @@
 .portfolio-redesign #sobre .sobre__texto p:nth-of-type(2) {
   font-family: var(--font-serif);
   font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-style: italic;
   line-height: 1.38;
 }
 
@@ -628,7 +629,7 @@
     align-self: center;
     flex: none;
     width: min(78vw, 360px);
-    aspect-ratio: 4 / 4.3;
+    aspect-ratio: 1920 / 1828;
     border: 0;
     box-shadow: none;
   }
@@ -717,8 +718,8 @@
   .portfolio-redesign #sobre .sobre__photo {
     align-self: center;
     flex: none;
-    width: min(78vw, 360px);
-    aspect-ratio: 3 / 4;
+    width: min(78vw, 320px);
+    aspect-ratio: 9 / 16;
     border: 0;
     box-shadow: none;
   }
