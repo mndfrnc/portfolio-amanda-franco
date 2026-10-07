@@ -1,0 +1,178 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import "../../styles/case-page.css";
+---
+
+<Layout
+  title="Site Portfolio — Arquitetura e CMS | Amanda Franco"
+  description="Case de arquitetura: o próprio portfólio, com identidade aplicada em código, CMS escopado com segurança e cada case preservando sua própria rota."
+>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <div class="case-page">
+    <header class="case-header">
+      <a href="/" class="brand" aria-label="Voltar ao portfólio de Amanda Franco">
+        <img src="/identidade/amanda-wordmark-atual.svg" alt="amanda*" width="432" height="93" />
+      </a>
+      <nav aria-label="Navegação do case">
+        <a href="#contexto">Contexto</a>
+        <a href="#processo">Processo</a>
+        <a href="#entrega">Entrega</a>
+        <a href="/">Portfólio</a>
+      </nav>
+    </header>
+
+    <main id="conteudo" class="case-shell">
+      <section class="case-hero">
+        <p class="eyebrow">Arquitetura de produto · identidade de marca</p>
+        <h1>Site Portfolio</h1>
+        <p class="case-hero__lead">
+          O site que hospeda meus cases é, ele mesmo, um case: decisões de arquitetura, escopo
+          de CMS e proteção de marca aplicadas ao meu próprio portfólio.
+        </p>
+        <div class="case-meta">
+          <span>Astro + Vercel</span>
+          <span>CMS escopado (Storyblok)</span>
+          <span>Em operação</span>
+        </div>
+      </section>
+
+      <section id="contexto">
+        <p class="eyebrow">Contexto</p>
+        <h2>Um portfólio precisa provar o mesmo rigor que mostra.</h2>
+        <div class="case-prose">
+          <p>
+            Eu precisava de um portfólio profissional que não fosse só uma lista de projetos:
+            precisava provar, no próprio site, o mesmo rigor que mostro nos cases que ele
+            hospeda. Isso significava decidir arquitetura, não só design: onde cada case vive, o
+            que pode mudar sem deploy, o que precisa ficar protegido por versionamento, e como
+            manter a identidade de marca consistente conforme o site cresce.
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <p class="eyebrow">Percepção</p>
+        <h2>Nem todo conteúdo deveria ser editável pelo mesmo caminho.</h2>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Percepção 1</span>
+            <h3>Prova de trabalho precisa de versionamento</h3>
+            <p>
+              As páginas que carregam identidade e cases (home, English Tool, Leo, Pipeline
+              Health) precisam de controle de versão e revisão antes de ir ao ar. São a prova do
+              meu trabalho, não podem mudar por engano.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Percepção 2</span>
+            <h3>Um CMS mal escopado é risco de marca</h3>
+            <p>
+              Dar a um CMS acesso à página inteira significa que qualquer edição de conteúdo
+              pode, sem querer, alterar algo já aprovado. A decisão foi limitar o CMS a uma área
+              isolada e nunca deixá-lo tocar a camada de identidade.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="processo">
+        <p class="eyebrow">Meu papel e processo</p>
+        <h2>CMS escopado, cada case com sua própria rota.</h2>
+        <div class="case-prose">
+          <p>
+            Conduzi o desenvolvimento ponta a ponta (arquitetura, integrações, identidade
+            aplicada em código), orquestrando ferramentas de IA para a implementação, com decisão
+            final e validação em produto e marca.
+          </p>
+        </div>
+        <div class="case-grid case-grid--2">
+          <article class="case-card">
+            <span>Base</span>
+            <h3>Astro estático, deploy na Vercel</h3>
+            <p>Performance e simplicidade, sem runtime de servidor desnecessário para um portfólio.</p>
+          </article>
+          <article class="case-card">
+            <span>CMS escopado</span>
+            <h3>Storyblok só no blog</h3>
+            <p>
+              Integrado apenas ao content type <code>blog_post</code>, com o editor visual
+              desativado. Nenhum script é injetado nas páginas; a landing aprovada fica intocada
+              por decisão de arquitetura, não por limitação técnica.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Debug orientado a evidência</span>
+            <h3>Bug real contornado e documentado</h3>
+            <p>
+              <code>getStaticPaths()</code> do Astro roda antes do cliente oficial do Storyblok
+              ser inicializado pela integração, quebrando a listagem de posts. A solução foi usar
+              a biblioteca do cliente diretamente nessa camada, documentada no código.
+            </p>
+          </article>
+          <article class="case-card">
+            <span>Proteção de ambiente</span>
+            <h3>Rascunho vs. publicado</h3>
+            <p>
+              Em desenvolvimento, mostro conteúdo em rascunho do CMS para revisar antes de
+              publicar; no build de produção, só entra conteúdo com status "published".
+            </p>
+          </article>
+        </div>
+        <div class="case-prose" style="margin-top: 1.75rem;">
+          <p>
+            <strong>Cada case mantém sua própria rota e dados.</strong> O Pipeline Health manteve
+            seu dashboard, filtros e endpoint de dados exatamente como estavam
+            (<code>/crm</code>), sem ser forçado a um template genérico de case, preservando a
+            análise e os números já validados.
+          </p>
+          <p>
+            <strong>Redirecionamentos de URLs antigas</strong> foram preservados via configuração
+            da Vercel, para que links já compartilhados não quebrem com o redesign.
+          </p>
+          <p>
+            <strong>Documentação para mim mesma:</strong> escrevi um README em português simples
+            explicando onde editar textos e cases sem precisar tocar em componentes — um contrato
+            claro entre o que é conteúdo e o que é layout.
+          </p>
+        </div>
+      </section>
+
+      <section id="entrega">
+        <p class="eyebrow">Entrega</p>
+        <h2>O que está construído e em operação hoje.</h2>
+        <ul class="case-list">
+          <li>Site em produção em amandafranco.com.br, Astro + Vercel.</li>
+          <li>Sistema de identidade aplicado de forma consistente: tipografia (Fraunces Variable + Space Grotesk Variable), paleta (papel, tinta, magenta, verde-limão) e ativos de marca em SVG vetorial.</li>
+          <li>Três cases publicados com página própria: Pipeline Health (com dashboard interativo preservado), English Tool e Leo no WhatsApp.</li>
+          <li>Blog integrado ao Storyblok, com fluxo seguro de rascunho e publicação.</li>
+          <li>Redirecionamentos de URLs legadas configurados.</li>
+          <li>README de manutenção para edição de conteúdo sem necessidade de código.</li>
+        </ul>
+      </section>
+
+      <section>
+        <p class="eyebrow">Status e replicabilidade</p>
+        <h2>Em produção, com um padrão de arquitetura reaproveitável.</h2>
+        <div class="case-prose">
+          <p>
+            O site está em produção, com identidade aplicada e os três cases publicados e
+            aprovados.
+          </p>
+          <p>
+            O padrão de arquitetura (conteúdo estático versionado para o que é prova de
+            trabalho, CMS escopado e isolado para o que é editorial recorrente, com proteção de
+            ambiente rascunho/publicado) é replicável para qualquer site que precise combinar
+            páginas de marca protegidas com conteúdo editável sem comprometer consistência
+            visual.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="case-footer">
+      <p>Site Portfolio · Case de Amanda Franco</p>
+      <a href="/">Voltar ao portfólio</a>
+    </footer>
+  </div>
+</Layout>

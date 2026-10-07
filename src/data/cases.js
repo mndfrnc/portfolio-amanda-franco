@@ -55,4 +55,19 @@ export const cases = [
       "Concluído — ver análise e dashboard.",
     ],
   },
+  {
+    titulo: "Site Portfolio",
+    tag: "Arquitetura de produto · identidade de marca · CMS",
+    badge: "Case completo e explorável",
+    href: "/cases/site-portfolio",
+    sintese: [
+      "O próprio portfólio: decisões de arquitetura para que o site prove o mesmo " +
+        "rigor técnico que os cases que ele hospeda.",
+      "Condução ponta a ponta — arquitetura, integrações e identidade aplicada em " +
+        "código — orquestrando ferramentas de IA para a implementação.",
+      "CMS escopado só ao blog, sem tocar a identidade; cada case com sua própria " +
+        "rota e dados preservados.",
+      "Em operação — ver case completo.",
+    ],
+  },
 ];
