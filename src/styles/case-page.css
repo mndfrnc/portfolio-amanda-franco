@@ -245,6 +245,25 @@
   color: var(--editorial-muted);
 }
 
+.case-page .case-figure {
+  margin-top: 1.75rem;
+  max-width: 28rem;
+}
+
+.case-page .case-figure img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1.5px solid var(--editorial-line);
+}
+
+.case-page .case-figure figcaption {
+  margin-top: 0.625rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--editorial-muted);
+}
+
 .case-page .case-cta {
   display: inline-flex;
   align-items: center;
